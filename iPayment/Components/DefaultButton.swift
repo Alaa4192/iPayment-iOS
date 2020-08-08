@@ -12,7 +12,7 @@ struct DefaultButton: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .padding(.horizontal, 16)
+            .padding(.horizontal, 24)
             .padding(.vertical, 8)
             .background(Colors.darkBlue)
             .foregroundColor(Color.white)

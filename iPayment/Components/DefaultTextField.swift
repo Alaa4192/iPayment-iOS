@@ -12,7 +12,8 @@ struct DefaultTextField: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .padding(8)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .padding(.vertical, 4)
     }
 }
 

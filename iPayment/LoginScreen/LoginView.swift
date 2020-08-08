@@ -17,9 +17,6 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .center) {
-                Text("Login")
-                    .configAsTitle()
-                    .padding(.bottom, 32)
                     
                 Group {
                     TextField("Email", text: $email)
@@ -29,21 +26,47 @@ struct LoginView: View {
                     SecureField("Password", text: $password)
                         .modifier(DefaultSecureField())
                 }
+                    .autocapitalization(.none)
+                
+                Rectangle()
+                    .frame(height: 32)
+                    .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
                 
                 Button(action: {
                     self.login()
                 }, label: {
                     Text("Login")
                     })
-                .modifier(DefaultButton())
+                    .modifier(DefaultButton())
+                
+                Rectangle()
+                    .frame(height: 16)
+                    .foregroundColor(.white)
+                
+                HStack {
+                    Button(action: {
+                        
+                    }, label: {
+                        Text("Forgot your password?")
+                            .font(.footnote)
+                    })
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        
+                    }, label: {
+                        Text("Sign-up")
+                            .font(.footnote)
+                    })
+                }
                 
             }
             .frame(width: 300)
             .padding(.vertical, 32.0)
             .padding(.horizontal, 16.0)
-            .cornerRadius(5)
-            .border(Colors.darkBlue, width: 2)
-            .cornerRadius(5)
+            .navigationBarTitle("Login")
+            
         }
     }
     
@@ -51,6 +74,7 @@ struct LoginView: View {
         viewModel.performLogin(self.email, self.password)
     }
 }
+
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
