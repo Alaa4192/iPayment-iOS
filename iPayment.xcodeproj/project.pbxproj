@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A5669E31D002453BDE77C67 /* libPods-iPayment.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E68036736865ACCACF96902E /* libPods-iPayment.a */; };
+		FE6CE08C24E7D9070000C17F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE6CE08B24E7D9070000C17F /* GoogleService-Info.plist */; };
 		FE86A05924D1E69200A8A627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86A05824D1E69200A8A627 /* AppDelegate.swift */; };
 		FE86A05B24D1E69200A8A627 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86A05A24D1E69200A8A627 /* SceneDelegate.swift */; };
 		FE86A05D24D1E69200A8A627 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86A05C24D1E69200A8A627 /* ContentView.swift */; };
@@ -22,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		83025FB95471A11ECDE986A1 /* Pods-iPayment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPayment.release.xcconfig"; path = "Target Support Files/Pods-iPayment/Pods-iPayment.release.xcconfig"; sourceTree = "<group>"; };
+		E68036736865ACCACF96902E /* libPods-iPayment.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iPayment.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7F8B37E47715FCE79C766FF /* Pods-iPayment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPayment.debug.xcconfig"; path = "Target Support Files/Pods-iPayment/Pods-iPayment.debug.xcconfig"; sourceTree = "<group>"; };
+		FE6CE08B24E7D9070000C17F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FE86A05524D1E69200A8A627 /* iPayment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPayment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE86A05824D1E69200A8A627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE86A05A24D1E69200A8A627 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,17 +49,44 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A5669E31D002453BDE77C67 /* libPods-iPayment.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		744C70895EF85A8A0DEC8E72 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E68036736865ACCACF96902E /* libPods-iPayment.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B0D34C1D5933B7461D7F3519 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E7F8B37E47715FCE79C766FF /* Pods-iPayment.debug.xcconfig */,
+				83025FB95471A11ECDE986A1 /* Pods-iPayment.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FE6CE08F24E808C60000C17F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FE86A04C24D1E69200A8A627 = {
 			isa = PBXGroup;
 			children = (
 				FE86A05724D1E69200A8A627 /* iPayment */,
 				FE86A05624D1E69200A8A627 /* Products */,
+				B0D34C1D5933B7461D7F3519 /* Pods */,
+				744C70895EF85A8A0DEC8E72 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +101,7 @@
 		FE86A05724D1E69200A8A627 /* iPayment */ = {
 			isa = PBXGroup;
 			children = (
+				FE6CE08F24E808C60000C17F /* Models */,
 				FECDE39224DB72C900FAFA41 /* GroupsScreen */,
 				FE86A09724D3208C00A8A627 /* Components */,
 				FE86A09424D302C300A8A627 /* Resources */,
@@ -78,6 +112,7 @@
 				FE86A05E24D1E69400A8A627 /* Assets.xcassets */,
 				FE86A06324D1E69400A8A627 /* LaunchScreen.storyboard */,
 				FE86A06624D1E69400A8A627 /* Info.plist */,
+				FE6CE08B24E7D9070000C17F /* GoogleService-Info.plist */,
 				FE86A06024D1E69400A8A627 /* Preview Content */,
 			);
 			path = iPayment;
@@ -132,9 +167,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FE86A06924D1E69400A8A627 /* Build configuration list for PBXNativeTarget "iPayment" */;
 			buildPhases = (
+				C8962F385EB0E30D70D5D01E /* [CP] Check Pods Manifest.lock */,
 				FE86A05124D1E69200A8A627 /* Sources */,
 				FE86A05224D1E69200A8A627 /* Frameworks */,
 				FE86A05324D1E69200A8A627 /* Resources */,
+				C2CB83B023202EB2F8B3EE61 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -184,12 +221,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE86A06524D1E69400A8A627 /* LaunchScreen.storyboard in Resources */,
+				FE6CE08C24E7D9070000C17F /* GoogleService-Info.plist in Resources */,
 				FE86A06224D1E69400A8A627 /* Preview Assets.xcassets in Resources */,
 				FE86A05F24D1E69400A8A627 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C2CB83B023202EB2F8B3EE61 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iPayment/Pods-iPayment-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iPayment/Pods-iPayment-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iPayment/Pods-iPayment-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8962F385EB0E30D70D5D01E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iPayment-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FE86A05124D1E69200A8A627 /* Sources */ = {
@@ -338,6 +418,7 @@
 		};
 		FE86A06A24D1E69400A8A627 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7F8B37E47715FCE79C766FF /* Pods-iPayment.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -357,6 +438,7 @@
 		};
 		FE86A06B24D1E69400A8A627 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83025FB95471A11ECDE986A1 /* Pods-iPayment.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

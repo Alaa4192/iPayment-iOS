@@ -9,15 +9,16 @@
 import SwiftUI
 
 struct LoginView: View {
+    
     @State var email: String = ""
     @State var password: String = ""
+    
     
     private var viewModel = LoginViewModel()
     
     var body: some View {
         NavigationView {
             VStack(alignment: .center) {
-                    
                 Group {
                     TextField("Email", text: $email)
                         .modifier(DefaultTextField())
@@ -66,12 +67,12 @@ struct LoginView: View {
             .padding(.vertical, 32.0)
             .padding(.horizontal, 16.0)
             .navigationBarTitle("Login")
-            
+        
         }
     }
     
     func login() {
-        viewModel.performLogin(self.email, self.password)
+         viewModel.performLogin(self.email, self.password)
     }
 }
 

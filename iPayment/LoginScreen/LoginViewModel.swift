@@ -7,12 +7,21 @@
 //
 
 import SwiftUI
+import Firebase
 
 class LoginViewModel {
-    
-    
-    func performLogin(_ username: String, _ password: String) {
         
+    func performLogin(_ username: String, _ password: String) {
+        Auth.auth().signIn(withEmail: username, password: password) { authResult, error in
+            if error != nil {
+                
+            }
+            if authResult != nil {
+                
+            } else {
+                
+            }
+        }
     }
     
 }
