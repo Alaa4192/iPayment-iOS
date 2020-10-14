@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A5669E31D002453BDE77C67 /* libPods-iPayment.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E68036736865ACCACF96902E /* libPods-iPayment.a */; };
+		FE62791E2537619200ADC1A9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62791D2537619200ADC1A9 /* LoadingView.swift */; };
 		FE6CE08C24E7D9070000C17F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE6CE08B24E7D9070000C17F /* GoogleService-Info.plist */; };
 		FE86A05924D1E69200A8A627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86A05824D1E69200A8A627 /* AppDelegate.swift */; };
 		FE86A05B24D1E69200A8A627 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86A05A24D1E69200A8A627 /* SceneDelegate.swift */; };
@@ -27,6 +28,7 @@
 		83025FB95471A11ECDE986A1 /* Pods-iPayment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPayment.release.xcconfig"; path = "Target Support Files/Pods-iPayment/Pods-iPayment.release.xcconfig"; sourceTree = "<group>"; };
 		E68036736865ACCACF96902E /* libPods-iPayment.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iPayment.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7F8B37E47715FCE79C766FF /* Pods-iPayment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPayment.debug.xcconfig"; path = "Target Support Files/Pods-iPayment/Pods-iPayment.debug.xcconfig"; sourceTree = "<group>"; };
+		FE62791D2537619200ADC1A9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FE6CE08B24E7D9070000C17F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FE86A05524D1E69200A8A627 /* iPayment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPayment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE86A05824D1E69200A8A627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				FE86A09824D320A300A8A627 /* DefaultButton.swift */,
 				FE86A09A24D35F4F00A8A627 /* DefaultTextField.swift */,
 				FE86A09C24D3614900A8A627 /* DefaultSecureField.swift */,
+				FE62791D2537619200ADC1A9 /* LoadingView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				FE86A05924D1E69200A8A627 /* AppDelegate.swift in Sources */,
 				FE86A09624D302F000A8A627 /* Colors.swift in Sources */,
 				FE86A05B24D1E69200A8A627 /* SceneDelegate.swift in Sources */,
+				FE62791E2537619200ADC1A9 /* LoadingView.swift in Sources */,
 				FE86A09D24D3614900A8A627 /* DefaultSecureField.swift in Sources */,
 				FE86A09B24D35F4F00A8A627 /* DefaultTextField.swift in Sources */,
 				FE86A06D24D1EA7600A8A627 /* LoginView.swift in Sources */,

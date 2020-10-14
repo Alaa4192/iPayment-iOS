@@ -14,83 +14,98 @@ struct LoginView: View {
     @State var password: String = ""
     @State var hintText: String = ""
     @State var hintColor: Color = .red
+    @State var isLoading: Bool = false
     
     private var viewModel = LoginViewModel()
     
     var body: some View {
-        NavigationView {
-            VStack(alignment: .center) {
-                Group {
-                    TextField("Email", text: $email)
-                        .modifier(DefaultTextField())
-                        .keyboardType(.emailAddress)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    
-                    SecureField("Password", text: $password)
-                        .modifier(DefaultSecureField())
-                    
-                    Text($hintText.wrappedValue)
-                        .foregroundColor(hintColor)
-                }
-                .autocapitalization(.none)
-                
-                Rectangle()
-                    .frame(height: 32)
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
-                
-                Button(action: {
-                    self.login()
-                }, label: {
-                    Text("Login")
-                })
-                .modifier(DefaultButton())
-                
-                Rectangle()
-                    .frame(height: 16)
-                    .foregroundColor(.white)
-                
-                HStack {
-                    Button(action: {
+        LoadingView(isShowing: .constant($isLoading.wrappedValue)) {
+            NavigationView {
+                VStack(alignment: .center) {
+                    Group {
+                        TextField("Email", text: $email)
+                            .modifier(DefaultTextField())
+                            .keyboardType(.emailAddress)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
                         
-                    }, label: {
-                        Text("Forgot your password?")
-                            .font(.footnote)
-                    })
+                        SecureField("Password", text: $password)
+                            .modifier(DefaultSecureField())
+                        
+                        Text($hintText.wrappedValue)
+                            .foregroundColor(hintColor)
+                    }
+                    .autocapitalization(.none)
                     
-                    Spacer()
+                    Rectangle()
+                        .frame(height: 32)
+                        .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
                     
                     Button(action: {
-                        
+                        self.login()
                     }, label: {
-                        Text("Sign-up")
-                            .font(.footnote)
+                        Text("Login")
                     })
+                    .modifier(DefaultButton())
+                    
+                    Rectangle()
+                        .frame(height: 16)
+                        .foregroundColor(.white)
+                    
+                    HStack {
+                        Button(action: {
+                            
+                        }, label: {
+                            Text("Forgot your password?")
+                                .font(.footnote)
+                        })
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            
+                        }, label: {
+                            Text("Sign-up")
+                                .font(.footnote)
+                        })
+                    }
+                    
+                    
+                    
                 }
+                .frame(width: 300)
+                .padding(.vertical, 32.0)
+                .padding(.horizontal, 16.0)
+                .navigationBarTitle("Login")
                 
             }
-            .frame(width: 300)
-            .padding(.vertical, 32.0)
-            .padding(.horizontal, 16.0)
-            .navigationBarTitle("Login")
-            
         }
     }
     
     func login() {
-        viewModel.performLogin(self.email, self.password,  onError: { error in
-            switch error.code {
-            case AuthErrorCode.invalidEmail.rawValue:
-                hintText = "Invalid email"
-                break
-                    
-            case AuthErrorCode.wrongPassword.rawValue:
-                hintText = "Invalid email or password"
-                break
-            
-            default:
-                hintText = "Error"
-            }
-        })
+        self.isLoading = true
+        
+        viewModel.performLogin(self.email, self.password,
+                               onError: { error in
+                                self.isLoading = false
+                                
+                                switch error.code {
+                                case AuthErrorCode.invalidEmail.rawValue:
+                                    hintText = "Invalid email"
+                                    
+                                case AuthErrorCode.wrongPassword.rawValue:
+                                    hintText = "Invalid email or password"
+                                    
+                                case AuthErrorCode.userNotFound.rawValue:
+                                    hintText = "Invalid email or password"
+                                    
+                                default:
+                                    hintText = "Error"
+                                }
+                               },
+                               onSuccess: {
+                                self.isLoading = false
+                               }
+        )
         
         
     }
