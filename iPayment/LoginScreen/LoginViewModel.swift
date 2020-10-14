@@ -11,16 +11,23 @@ import Firebase
 
 class LoginViewModel {
         
-    func performLogin(_ username: String, _ password: String) {
+    func performLogin(_ username: String, _ password: String, onError: @escaping (NSError) -> Void) {
         Auth.auth().signIn(withEmail: username, password: password) { authResult, error in
-            if error != nil {
+            
+            
+            guard let err = error as NSError? else {
+                guard let result = authResult else { return }
+                print(result)
                 
+                return
             }
-            if authResult != nil {
-                
-            } else {
-                
-            }
+            
+            onError(err)
+            
+//            if err.code == AuthErrorCode.invalidEmail.rawValue {
+//
+//            }
+            
         }
     }
     

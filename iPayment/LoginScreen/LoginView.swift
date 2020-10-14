@@ -7,12 +7,13 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct LoginView: View {
-    
     @State var email: String = ""
     @State var password: String = ""
-    
+    @State var hintText: String = ""
+    @State var hintColor: Color = .red
     
     private var viewModel = LoginViewModel()
     
@@ -23,11 +24,15 @@ struct LoginView: View {
                     TextField("Email", text: $email)
                         .modifier(DefaultTextField())
                         .keyboardType(.emailAddress)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                     
                     SecureField("Password", text: $password)
                         .modifier(DefaultSecureField())
+                    
+                    Text($hintText.wrappedValue)
+                        .foregroundColor(hintColor)
                 }
-                    .autocapitalization(.none)
+                .autocapitalization(.none)
                 
                 Rectangle()
                     .frame(height: 32)
@@ -37,8 +42,8 @@ struct LoginView: View {
                     self.login()
                 }, label: {
                     Text("Login")
-                    })
-                    .modifier(DefaultButton())
+                })
+                .modifier(DefaultButton())
                 
                 Rectangle()
                     .frame(height: 16)
@@ -67,12 +72,27 @@ struct LoginView: View {
             .padding(.vertical, 32.0)
             .padding(.horizontal, 16.0)
             .navigationBarTitle("Login")
-        
+            
         }
     }
     
     func login() {
-         viewModel.performLogin(self.email, self.password)
+        viewModel.performLogin(self.email, self.password,  onError: { error in
+            switch error.code {
+            case AuthErrorCode.invalidEmail.rawValue:
+                hintText = "Invalid email"
+                break
+                    
+            case AuthErrorCode.wrongPassword.rawValue:
+                hintText = "Invalid email or password"
+                break
+            
+            default:
+                hintText = "Error"
+            }
+        })
+        
+        
     }
 }
 
