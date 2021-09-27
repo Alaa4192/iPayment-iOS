@@ -1,4 +1,4 @@
-framework module Pods_iPayment {
+module Pods_iPayment {
   umbrella header "Pods-iPayment-umbrella.h"
 
   export *

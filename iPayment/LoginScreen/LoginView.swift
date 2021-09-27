@@ -9,7 +9,7 @@
 import SwiftUI
 import Firebase
 
-struct LoginView: View {
+struct LoginView: BaseView {
     @State var email: String = ""
     @State var password: String = ""
     @State var hintText: String = ""
@@ -17,7 +17,7 @@ struct LoginView: View {
     @State var isLoading: Bool = true
     @State var isAlreadyLoggedIn: Bool = false
     
-    private var viewModel = LoginViewModel()
+    var viewModel = LoginViewModel()
         
     var body: some View {
         if !$isAlreadyLoggedIn.wrappedValue {
@@ -79,13 +79,13 @@ struct LoginView: View {
                         print("LoginView", "loginIsNeeded")
                         viewModel.loginIsNeeded(onResult: { isNeeded in
                             self.isAlreadyLoggedIn = !isNeeded
-                            self.isLoading = isNeeded
+                            self.isLoading = !isNeeded
                         })
                     })
                 }
             }
         } else {
-            GroupView()
+            GroupsView()
         }
     }
     

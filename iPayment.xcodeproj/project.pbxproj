@@ -8,7 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		4A5669E31D002453BDE77C67 /* libPods-iPayment.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E68036736865ACCACF96902E /* libPods-iPayment.a */; };
-		FE42339B2539CAD700C3AE0E /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE42339A2539CAD700C3AE0E /* GroupView.swift */; };
+		FE1F53BB26FFDC1C00893621 /* GroupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53BA26FFDC1C00893621 /* GroupsViewModel.swift */; };
+		FE1F53BD26FFDFA000893621 /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53BC26FFDFA000893621 /* GroupModel.swift */; };
+		FE1F53BF26FFE10D00893621 /* BaseListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53BE26FFE10D00893621 /* BaseListModel.swift */; };
+		FE1F53C227011ED900893621 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53C127011ED900893621 /* BaseView.swift */; };
+		FE1F53C4270120C700893621 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53C3270120C700893621 /* BaseViewModel.swift */; };
+		FE1F53C72701252400893621 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53C62701252400893621 /* Api.swift */; };
+		FE42339B2539CAD700C3AE0E /* GroupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE42339A2539CAD700C3AE0E /* GroupsView.swift */; };
 		FE62791E2537619200ADC1A9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62791D2537619200ADC1A9 /* LoadingView.swift */; };
 		FE6CE08C24E7D9070000C17F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE6CE08B24E7D9070000C17F /* GoogleService-Info.plist */; };
 		FE86A05924D1E69200A8A627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86A05824D1E69200A8A627 /* AppDelegate.swift */; };
@@ -29,7 +35,13 @@
 		83025FB95471A11ECDE986A1 /* Pods-iPayment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPayment.release.xcconfig"; path = "Target Support Files/Pods-iPayment/Pods-iPayment.release.xcconfig"; sourceTree = "<group>"; };
 		E68036736865ACCACF96902E /* libPods-iPayment.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iPayment.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7F8B37E47715FCE79C766FF /* Pods-iPayment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPayment.debug.xcconfig"; path = "Target Support Files/Pods-iPayment/Pods-iPayment.debug.xcconfig"; sourceTree = "<group>"; };
-		FE42339A2539CAD700C3AE0E /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
+		FE1F53BA26FFDC1C00893621 /* GroupsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewModel.swift; sourceTree = "<group>"; };
+		FE1F53BC26FFDFA000893621 /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
+		FE1F53BE26FFE10D00893621 /* BaseListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListModel.swift; sourceTree = "<group>"; };
+		FE1F53C127011ED900893621 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		FE1F53C3270120C700893621 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		FE1F53C62701252400893621 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		FE42339A2539CAD700C3AE0E /* GroupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsView.swift; sourceTree = "<group>"; };
 		FE62791D2537619200ADC1A9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FE6CE08B24E7D9070000C17F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FE86A05524D1E69200A8A627 /* iPayment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPayment.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,9 +89,29 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FE1F53C027011EB800893621 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				FE1F53C52701251100893621 /* Networking */,
+				FE1F53C127011ED900893621 /* BaseView.swift */,
+				FE1F53C3270120C700893621 /* BaseViewModel.swift */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		FE1F53C52701251100893621 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				FE1F53C62701252400893621 /* Api.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		FE6CE08F24E808C60000C17F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FE1F53BC26FFDFA000893621 /* GroupModel.swift */,
+				FE1F53BE26FFE10D00893621 /* BaseListModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -105,6 +137,7 @@
 		FE86A05724D1E69200A8A627 /* iPayment */ = {
 			isa = PBXGroup;
 			children = (
+				FE1F53C027011EB800893621 /* Infrastructure */,
 				FE6CE08F24E808C60000C17F /* Models */,
 				FECDE39224DB72C900FAFA41 /* GroupsScreen */,
 				FE86A09724D3208C00A8A627 /* Components */,
@@ -161,7 +194,8 @@
 		FECDE39224DB72C900FAFA41 /* GroupsScreen */ = {
 			isa = PBXGroup;
 			children = (
-				FE42339A2539CAD700C3AE0E /* GroupView.swift */,
+				FE42339A2539CAD700C3AE0E /* GroupsView.swift */,
+				FE1F53BA26FFDC1C00893621 /* GroupsViewModel.swift */,
 			);
 			path = GroupsScreen;
 			sourceTree = "<group>";
@@ -282,16 +316,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE1F53BB26FFDC1C00893621 /* GroupsViewModel.swift in Sources */,
 				FE86A05924D1E69200A8A627 /* AppDelegate.swift in Sources */,
 				FE86A09624D302F000A8A627 /* Colors.swift in Sources */,
 				FE86A05B24D1E69200A8A627 /* SceneDelegate.swift in Sources */,
 				FE62791E2537619200ADC1A9 /* LoadingView.swift in Sources */,
+				FE1F53C72701252400893621 /* Api.swift in Sources */,
+				FE1F53C4270120C700893621 /* BaseViewModel.swift in Sources */,
 				FE86A09D24D3614900A8A627 /* DefaultSecureField.swift in Sources */,
+				FE1F53BD26FFDFA000893621 /* GroupModel.swift in Sources */,
 				FE86A09B24D35F4F00A8A627 /* DefaultTextField.swift in Sources */,
 				FE86A06D24D1EA7600A8A627 /* LoginView.swift in Sources */,
 				FE86A05D24D1E69200A8A627 /* ContentView.swift in Sources */,
 				FE86A09924D320A300A8A627 /* DefaultButton.swift in Sources */,
-				FE42339B2539CAD700C3AE0E /* GroupView.swift in Sources */,
+				FE1F53BF26FFE10D00893621 /* BaseListModel.swift in Sources */,
+				FE1F53C227011ED900893621 /* BaseView.swift in Sources */,
+				FE42339B2539CAD700C3AE0E /* GroupsView.swift in Sources */,
 				FECDE39424DB737900FAFA41 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

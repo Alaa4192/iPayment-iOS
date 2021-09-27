@@ -9,7 +9,7 @@
 import SwiftUI
 import Firebase
 
-class LoginViewModel {
+class LoginViewModel: BaseViewModel {
     
     func loginIsNeeded(onResult: @escaping (_ isNeeded: Bool) -> Void) {
         DispatchQueue.global(qos: .background).async {
