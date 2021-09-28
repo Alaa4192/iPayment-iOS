@@ -14,6 +14,12 @@
 		FE1F53C227011ED900893621 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53C127011ED900893621 /* BaseView.swift */; };
 		FE1F53C4270120C700893621 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53C3270120C700893621 /* BaseViewModel.swift */; };
 		FE1F53C72701252400893621 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53C62701252400893621 /* Api.swift */; };
+		FE1F53CA2703281700893621 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53C92703281700893621 /* GroupView.swift */; };
+		FE1F53CC2703287900893621 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53CB2703287900893621 /* GroupViewModel.swift */; };
+		FE1F53CF27032A3A00893621 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53CE27032A3A00893621 /* MainView.swift */; };
+		FE1F53D127032A6F00893621 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53D027032A6F00893621 /* MainViewModel.swift */; };
+		FE1F53D427032B5000893621 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53D327032B5000893621 /* ProfileView.swift */; };
+		FE1F53D627032B5C00893621 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53D527032B5C00893621 /* ProfileViewModel.swift */; };
 		FE42339B2539CAD700C3AE0E /* GroupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE42339A2539CAD700C3AE0E /* GroupsView.swift */; };
 		FE62791E2537619200ADC1A9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62791D2537619200ADC1A9 /* LoadingView.swift */; };
 		FE6CE08C24E7D9070000C17F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE6CE08B24E7D9070000C17F /* GoogleService-Info.plist */; };
@@ -41,6 +47,12 @@
 		FE1F53C127011ED900893621 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		FE1F53C3270120C700893621 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		FE1F53C62701252400893621 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		FE1F53C92703281700893621 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
+		FE1F53CB2703287900893621 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		FE1F53CE27032A3A00893621 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		FE1F53D027032A6F00893621 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		FE1F53D327032B5000893621 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		FE1F53D527032B5C00893621 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		FE42339A2539CAD700C3AE0E /* GroupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsView.swift; sourceTree = "<group>"; };
 		FE62791D2537619200ADC1A9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FE6CE08B24E7D9070000C17F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -107,6 +119,33 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		FE1F53C82703280800893621 /* GroupScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FE1F53C92703281700893621 /* GroupView.swift */,
+				FE1F53CB2703287900893621 /* GroupViewModel.swift */,
+			);
+			path = GroupScreen;
+			sourceTree = "<group>";
+		};
+		FE1F53CD27032A2D00893621 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FE1F53CE27032A3A00893621 /* MainView.swift */,
+				FE1F53D027032A6F00893621 /* MainViewModel.swift */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		FE1F53D227032B4200893621 /* ProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FE1F53D327032B5000893621 /* ProfileView.swift */,
+				FE1F53D527032B5C00893621 /* ProfileViewModel.swift */,
+			);
+			path = ProfileScreen;
+			sourceTree = "<group>";
+		};
 		FE6CE08F24E808C60000C17F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +176,9 @@
 		FE86A05724D1E69200A8A627 /* iPayment */ = {
 			isa = PBXGroup;
 			children = (
+				FE1F53D227032B4200893621 /* ProfileScreen */,
+				FE1F53CD27032A2D00893621 /* MainScreen */,
+				FE1F53C82703280800893621 /* GroupScreen */,
 				FE1F53C027011EB800893621 /* Infrastructure */,
 				FE6CE08F24E808C60000C17F /* Models */,
 				FECDE39224DB72C900FAFA41 /* GroupsScreen */,
@@ -318,6 +360,7 @@
 			files = (
 				FE1F53BB26FFDC1C00893621 /* GroupsViewModel.swift in Sources */,
 				FE86A05924D1E69200A8A627 /* AppDelegate.swift in Sources */,
+				FE1F53CA2703281700893621 /* GroupView.swift in Sources */,
 				FE86A09624D302F000A8A627 /* Colors.swift in Sources */,
 				FE86A05B24D1E69200A8A627 /* SceneDelegate.swift in Sources */,
 				FE62791E2537619200ADC1A9 /* LoadingView.swift in Sources */,
@@ -328,10 +371,15 @@
 				FE86A09B24D35F4F00A8A627 /* DefaultTextField.swift in Sources */,
 				FE86A06D24D1EA7600A8A627 /* LoginView.swift in Sources */,
 				FE86A05D24D1E69200A8A627 /* ContentView.swift in Sources */,
+				FE1F53CF27032A3A00893621 /* MainView.swift in Sources */,
+				FE1F53D127032A6F00893621 /* MainViewModel.swift in Sources */,
+				FE1F53D627032B5C00893621 /* ProfileViewModel.swift in Sources */,
 				FE86A09924D320A300A8A627 /* DefaultButton.swift in Sources */,
 				FE1F53BF26FFE10D00893621 /* BaseListModel.swift in Sources */,
 				FE1F53C227011ED900893621 /* BaseView.swift in Sources */,
 				FE42339B2539CAD700C3AE0E /* GroupsView.swift in Sources */,
+				FE1F53CC2703287900893621 /* GroupViewModel.swift in Sources */,
+				FE1F53D427032B5000893621 /* ProfileView.swift in Sources */,
 				FECDE39424DB737900FAFA41 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

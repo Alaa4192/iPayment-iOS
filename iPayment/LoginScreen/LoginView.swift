@@ -85,7 +85,7 @@ struct LoginView: BaseView {
                 }
             }
         } else {
-            GroupsView()
+            MainView()
         }
     }
     

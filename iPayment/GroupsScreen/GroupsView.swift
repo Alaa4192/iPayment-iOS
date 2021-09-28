@@ -17,9 +17,12 @@ struct GroupsView: BaseView {
     var body: some View {
         LoadingView(isShowing: .constant($isLoading.wrappedValue)) {
             NavigationView {
-                VStack(alignment: .center, spacing: 8) {
+                List {
                     ForEach(items, id: \.self) { group in
-                        GroupItemView(group: group)
+                        NavigationLink(
+                            destination: GroupView(group: group)) {
+                                GroupItemView(group: group)
+                            }
                     }
                 }
                 .onAppear {
@@ -28,7 +31,9 @@ struct GroupsView: BaseView {
                         items = groups
                     }
                 }
+                .navigationBarTitle("Groups")
             }
+
         }
     }
 }
@@ -40,7 +45,7 @@ struct GroupItemView: View {
         HStack {
             Text(group.name)
             Spacer()
-        }.padding(.all)
+        }.padding(.vertical)
     }
 }
 

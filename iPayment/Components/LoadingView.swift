@@ -25,8 +25,8 @@ struct LoadingView<Content>: View where Content: View {
                     ActivityIndicator(isAnimating: .constant(true), style: .large)
                 }
                 .frame(width: geomtry.size.width / 2, height: geomtry.size.height / 5)
-                .background(Color.secondary.colorInvert())
-                .foregroundColor(Color.primary)
+                .background(Colors.darkBlue)
+                .foregroundColor(Color.white)
                 .cornerRadius(20)
                 .opacity(self.isShowing ? 1 : 0)
             }
@@ -48,8 +48,10 @@ struct ActivityIndicator: UIViewRepresentable {
     }
 }
 
-//struct LoadingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//         LoadingView()
-//    }
-//}
+struct LoadingView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoadingView(isShowing: .constant(true)) {
+            Text("test")
+        }
+    }
+}
