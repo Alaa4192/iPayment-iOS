@@ -17,12 +17,13 @@ struct LoadingView<Content>: View where Content: View {
         GeometryReader { geomtry in
             ZStack(alignment: .center) {
                 self.content()
+                    .frame(maxWidth: .infinity)
                     .disabled(self.isShowing)
                     .blur(radius: self.isShowing ? 5 : 0)
                 
-                VStack {
-                    Text("Loading...")
+                VStack(spacing: 16) {
                     ActivityIndicator(isAnimating: .constant(true), style: .large)
+                    Text("Loading")
                 }
                 .frame(width: geomtry.size.width / 2, height: geomtry.size.height / 5)
                 .background(Colors.darkBlue)
@@ -45,6 +46,7 @@ struct ActivityIndicator: UIViewRepresentable {
     
     func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {
         isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
+        uiView.color = UIColor.white
     }
 }
 

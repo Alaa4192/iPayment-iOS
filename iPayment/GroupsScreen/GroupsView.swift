@@ -18,16 +18,18 @@ struct GroupsView: BaseView {
 
     var body: some View {
         LoadingView(isShowing: .constant($isLoading.wrappedValue)) {
-            List {
-                ForEach(items, id: \.self) { group in
-                    GroupItemView(group: group)
-                        .onTapGesture {
-                            self.navigationModel.pushMain(view: GroupView(group: group))
-                        }
+            ScrollView {
+                VStack {
+                    ForEach(items, id: \.self) { group in
+                        GroupItemView(group: group)
+                            .onTapGesture {
+                                self.navigationModel.pushMain(view: GroupView(group: group))
+                            }
+                    }
                 }
             }
             .onAppear {
-                viewModel.loadGroups{ groups in
+                viewModel.loadGroups { groups in
                     isLoading = false
                     items = groups
                 }
@@ -43,7 +45,8 @@ struct GroupItemView: View {
         HStack {
             Text(group.name)
             Spacer()
-        }.padding(.vertical)
+        }
+        .padding()
     }
 }
 
