@@ -35,6 +35,9 @@
 		FE86A09B24D35F4F00A8A627 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86A09A24D35F4F00A8A627 /* DefaultTextField.swift */; };
 		FE86A09D24D3614900A8A627 /* DefaultSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86A09C24D3614900A8A627 /* DefaultSecureField.swift */; };
 		FECDE39424DB737900FAFA41 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECDE39324DB737900FAFA41 /* LoginViewModel.swift */; };
+		FECF5043270B89A00004E1C5 /* BaseNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECF5042270B89A00004E1C5 /* BaseNavigationView.swift */; };
+		FECF5045270B8A780004E1C5 /* BaseNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECF5044270B8A780004E1C5 /* BaseNavigationModel.swift */; };
+		FECF5048270B8B200004E1C5 /* PushContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECF5047270B8B200004E1C5 /* PushContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +73,9 @@
 		FE86A09A24D35F4F00A8A627 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
 		FE86A09C24D3614900A8A627 /* DefaultSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSecureField.swift; sourceTree = "<group>"; };
 		FECDE39324DB737900FAFA41 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		FECF5042270B89A00004E1C5 /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
+		FECF5044270B8A780004E1C5 /* BaseNavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationModel.swift; sourceTree = "<group>"; };
+		FECF5047270B8B200004E1C5 /* PushContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,7 @@
 		FE1F53C027011EB800893621 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				FECF5046270B8AD60004E1C5 /* BaseViewNavigation */,
 				FE1F53C52701251100893621 /* Networking */,
 				FE1F53C127011ED900893621 /* BaseView.swift */,
 				FE1F53C3270120C700893621 /* BaseViewModel.swift */,
@@ -242,6 +249,16 @@
 			path = GroupsScreen;
 			sourceTree = "<group>";
 		};
+		FECF5046270B8AD60004E1C5 /* BaseViewNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				FECF5042270B89A00004E1C5 /* BaseNavigationView.swift */,
+				FECF5044270B8A780004E1C5 /* BaseNavigationModel.swift */,
+				FECF5047270B8B200004E1C5 /* PushContainerView.swift */,
+			);
+			path = BaseViewNavigation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -367,15 +384,18 @@
 				FE1F53C72701252400893621 /* Api.swift in Sources */,
 				FE1F53C4270120C700893621 /* BaseViewModel.swift in Sources */,
 				FE86A09D24D3614900A8A627 /* DefaultSecureField.swift in Sources */,
+				FECF5043270B89A00004E1C5 /* BaseNavigationView.swift in Sources */,
 				FE1F53BD26FFDFA000893621 /* GroupModel.swift in Sources */,
 				FE86A09B24D35F4F00A8A627 /* DefaultTextField.swift in Sources */,
 				FE86A06D24D1EA7600A8A627 /* LoginView.swift in Sources */,
+				FECF5045270B8A780004E1C5 /* BaseNavigationModel.swift in Sources */,
 				FE86A05D24D1E69200A8A627 /* ContentView.swift in Sources */,
 				FE1F53CF27032A3A00893621 /* MainView.swift in Sources */,
 				FE1F53D127032A6F00893621 /* MainViewModel.swift in Sources */,
 				FE1F53D627032B5C00893621 /* ProfileViewModel.swift in Sources */,
 				FE86A09924D320A300A8A627 /* DefaultButton.swift in Sources */,
 				FE1F53BF26FFE10D00893621 /* BaseListModel.swift in Sources */,
+				FECF5048270B8B200004E1C5 /* PushContainerView.swift in Sources */,
 				FE1F53C227011ED900893621 /* BaseView.swift in Sources */,
 				FE42339B2539CAD700C3AE0E /* GroupsView.swift in Sources */,
 				FE1F53CC2703287900893621 /* GroupViewModel.swift in Sources */,

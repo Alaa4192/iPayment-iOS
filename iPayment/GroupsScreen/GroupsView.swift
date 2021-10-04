@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct GroupsView: BaseView {
+    @EnvironmentObject var navigationModel: BaseNavigationModel
+
     @State var isLoading: Bool = true
     @State var items: Array<GroupModel> = Array()
 
@@ -16,24 +18,20 @@ struct GroupsView: BaseView {
 
     var body: some View {
         LoadingView(isShowing: .constant($isLoading.wrappedValue)) {
-            NavigationView {
-                List {
-                    ForEach(items, id: \.self) { group in
-                        NavigationLink(
-                            destination: GroupView(group: group)) {
-                                GroupItemView(group: group)
-                            }
-                    }
+            List {
+                ForEach(items, id: \.self) { group in
+                    GroupItemView(group: group)
+                        .onTapGesture {
+                            self.navigationModel.pushMain(view: GroupView(group: group))
+                        }
                 }
-                .onAppear {
-                    viewModel.loadGroups{ groups in
-                        isLoading = false
-                        items = groups
-                    }
-                }
-                .navigationBarTitle("Groups")
             }
-
+            .onAppear {
+                viewModel.loadGroups{ groups in
+                    isLoading = false
+                    items = groups
+                }
+            }
         }
     }
 }
@@ -57,14 +55,14 @@ struct GroupItemView_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
     }
 }
-
-struct GroupsView_Previews: PreviewProvider {
-    static var previews: some View {
-        GroupsView(
-            isLoading: false,
-            items: [
-                GroupModel.create(name: "Test 1", isFavorite: false),
-                GroupModel.create(name: "Test 2", isFavorite: false)
-            ])
-    }
-}
+//
+//struct GroupsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GroupsView(
+//            isLoading: false,
+//            items: [
+//                GroupModel.create(name: "Test 1", isFavorite: false),
+//                GroupModel.create(name: "Test 2", isFavorite: false)
+//            ])
+//    }
+//}

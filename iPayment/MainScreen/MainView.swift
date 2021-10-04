@@ -10,21 +10,31 @@ import SwiftUI
 
 struct MainView: BaseView {
 
+    var navigationModel = BaseNavigationModel()
+
     var viewModel = MainViewModel()
 
     var body: some View {
-        TabView {
-            GroupsView()
-                .tabItem {
-                    Image(systemName: "person.3.fill")
-                    Text("Groups")
-                }
+        BaseNavigationView(model: navigationModel) {
+            TabView {
+                GroupsView().environmentObject(self.navigationModel)
+                    .onAppear {
+                        navigationModel.setTitle(title: "Groups")
+                    }
+                    .tabItem {
+                        Image(systemName: "person.3.fill")
+                        Text("Groups")
+                    }
 
-            ProfileView()
-                .tabItem {
-                    Image(systemName: "person.circle.fill")
-                    Text("Profile")
-                }
+                ProfileView().environmentObject(self.navigationModel)
+                    .onAppear {
+                        navigationModel.setTitle(title: "Profile")
+                    }
+                    .tabItem {
+                        Image(systemName: "person.circle.fill")
+                        Text("Profile")
+                    }
+            }
         }
     }
 }

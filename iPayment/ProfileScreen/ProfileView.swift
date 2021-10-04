@@ -10,20 +10,18 @@ import SwiftUI
 import Firebase
 
 struct ProfileView: View {
+    @EnvironmentObject var navigationModel: BaseNavigationModel
+    
     var body: some View {
-        NavigationView {
-            Button(action: {
-                do {
-                    try Auth.auth().signOut()
-                } catch {
+        Button(action: {
+            do {
+                try Auth.auth().signOut()
+            } catch {
 
-                }
-            }, label: {
-                Text("Sign out")
-            })
-
-            .navigationBarTitle("Profile")
-        }
+            }
+        }, label: {
+            Text("Sign out")
+        })
     }
 }
 
