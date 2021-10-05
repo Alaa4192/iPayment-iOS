@@ -17,5 +17,9 @@ struct GroupModel: Codable, Hashable {
     static func create(name: String, isFavorite: Bool) -> GroupModel {
         return GroupModel(id: "ID", name: name, isFavorite: isFavorite, usersId: [])
     }
+
+    func getUsersCount() -> Int {
+        return usersId!.count
+    }
 }
 

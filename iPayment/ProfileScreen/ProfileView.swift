@@ -13,15 +13,20 @@ struct ProfileView: View {
     @EnvironmentObject var navigationModel: BaseNavigationModel
     
     var body: some View {
-        Button(action: {
-            do {
-                try Auth.auth().signOut()
-            } catch {
+        VStack {
+            Spacer()
 
-            }
-        }, label: {
-            Text("Sign out")
-        })
+            Button(action: {
+                do {
+                    try Auth.auth().signOut()
+                } catch {
+
+                }
+            }, label: {
+                Text("Sign out")
+            })
+            .padding()
+        }
     }
 }
 

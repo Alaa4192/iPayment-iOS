@@ -45,8 +45,16 @@ struct GroupItemView: View {
         HStack {
             Text(group.name)
             Spacer()
+
+            if group.isFavorite {
+                Image(systemName: "star.fill")
+            }
+
+            Image(systemName: "person.fill")
+            Text("(\(group.getUsersCount()))")
         }
-        .padding()
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
     }
 }
 
