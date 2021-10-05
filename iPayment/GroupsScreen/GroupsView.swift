@@ -13,6 +13,7 @@ struct GroupsView: BaseView {
 
     @State var isLoading: Bool = true
     @State var items: Array<GroupModel> = Array()
+    @State var showGroupForm: Bool = false
 
     var viewModel = GroupsViewModel()
 
@@ -29,11 +30,20 @@ struct GroupsView: BaseView {
                 }
             }
             .onAppear {
+                navigationModel.setNavigationBarItems(navigationBarItems:
+                                                        AnyView(Button("Create") {
+                                                            self.showGroupForm = true
+                                                        })
+                )
+
                 viewModel.loadGroups { groups in
                     isLoading = false
                     items = groups
                 }
             }
+        }
+        .sheet(isPresented: self.$showGroupForm) {
+            GroupFormView()
         }
     }
 }
@@ -66,7 +76,7 @@ struct GroupItemView_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
     }
 }
-//
+
 //struct GroupsView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        GroupsView(

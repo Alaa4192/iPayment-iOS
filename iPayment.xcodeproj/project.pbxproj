@@ -23,6 +23,8 @@
 		FE42339B2539CAD700C3AE0E /* GroupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE42339A2539CAD700C3AE0E /* GroupsView.swift */; };
 		FE62791E2537619200ADC1A9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62791D2537619200ADC1A9 /* LoadingView.swift */; };
 		FE6CE08C24E7D9070000C17F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE6CE08B24E7D9070000C17F /* GoogleService-Info.plist */; };
+		FE800648270CDB95005AECE5 /* GroupFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE800647270CDB95005AECE5 /* GroupFormView.swift */; };
+		FE80064A270D06B2005AECE5 /* GroupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE800649270D06B2005AECE5 /* GroupFormViewModel.swift */; };
 		FE86A05924D1E69200A8A627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86A05824D1E69200A8A627 /* AppDelegate.swift */; };
 		FE86A05B24D1E69200A8A627 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86A05A24D1E69200A8A627 /* SceneDelegate.swift */; };
 		FE86A05D24D1E69200A8A627 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86A05C24D1E69200A8A627 /* ContentView.swift */; };
@@ -59,6 +61,8 @@
 		FE42339A2539CAD700C3AE0E /* GroupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsView.swift; sourceTree = "<group>"; };
 		FE62791D2537619200ADC1A9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FE6CE08B24E7D9070000C17F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FE800647270CDB95005AECE5 /* GroupFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormView.swift; sourceTree = "<group>"; };
+		FE800649270D06B2005AECE5 /* GroupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormViewModel.swift; sourceTree = "<group>"; };
 		FE86A05524D1E69200A8A627 /* iPayment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPayment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE86A05824D1E69200A8A627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE86A05A24D1E69200A8A627 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -245,6 +249,8 @@
 			children = (
 				FE42339A2539CAD700C3AE0E /* GroupsView.swift */,
 				FE1F53BA26FFDC1C00893621 /* GroupsViewModel.swift */,
+				FE800647270CDB95005AECE5 /* GroupFormView.swift */,
+				FE800649270D06B2005AECE5 /* GroupFormViewModel.swift */,
 			);
 			path = GroupsScreen;
 			sourceTree = "<group>";
@@ -381,6 +387,7 @@
 				FE86A09624D302F000A8A627 /* Colors.swift in Sources */,
 				FE86A05B24D1E69200A8A627 /* SceneDelegate.swift in Sources */,
 				FE62791E2537619200ADC1A9 /* LoadingView.swift in Sources */,
+				FE800648270CDB95005AECE5 /* GroupFormView.swift in Sources */,
 				FE1F53C72701252400893621 /* Api.swift in Sources */,
 				FE1F53C4270120C700893621 /* BaseViewModel.swift in Sources */,
 				FE86A09D24D3614900A8A627 /* DefaultSecureField.swift in Sources */,
@@ -390,6 +397,7 @@
 				FE86A06D24D1EA7600A8A627 /* LoginView.swift in Sources */,
 				FECF5045270B8A780004E1C5 /* BaseNavigationModel.swift in Sources */,
 				FE86A05D24D1E69200A8A627 /* ContentView.swift in Sources */,
+				FE80064A270D06B2005AECE5 /* GroupFormViewModel.swift in Sources */,
 				FE1F53CF27032A3A00893621 /* MainView.swift in Sources */,
 				FE1F53D127032A6F00893621 /* MainViewModel.swift in Sources */,
 				FE1F53D627032B5C00893621 /* ProfileViewModel.swift in Sources */,
