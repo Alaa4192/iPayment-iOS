@@ -166,6 +166,18 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		FE80064B270E2E3F005AECE5 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				FE1F53D227032B4200893621 /* ProfileScreen */,
+				FE1F53CD27032A2D00893621 /* MainScreen */,
+				FE1F53C82703280800893621 /* GroupScreen */,
+				FECDE39224DB72C900FAFA41 /* GroupsScreen */,
+				FE86A07124D2059A00A8A627 /* LoginScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		FE86A04C24D1E69200A8A627 = {
 			isa = PBXGroup;
 			children = (
@@ -187,15 +199,11 @@
 		FE86A05724D1E69200A8A627 /* iPayment */ = {
 			isa = PBXGroup;
 			children = (
-				FE1F53D227032B4200893621 /* ProfileScreen */,
-				FE1F53CD27032A2D00893621 /* MainScreen */,
-				FE1F53C82703280800893621 /* GroupScreen */,
+				FE80064B270E2E3F005AECE5 /* Screens */,
 				FE1F53C027011EB800893621 /* Infrastructure */,
 				FE6CE08F24E808C60000C17F /* Models */,
-				FECDE39224DB72C900FAFA41 /* GroupsScreen */,
 				FE86A09724D3208C00A8A627 /* Components */,
 				FE86A09424D302C300A8A627 /* Resources */,
-				FE86A07124D2059A00A8A627 /* LoginScreen */,
 				FE86A05A24D1E69200A8A627 /* SceneDelegate.swift */,
 				FE86A05824D1E69200A8A627 /* AppDelegate.swift */,
 				FE86A05C24D1E69200A8A627 /* ContentView.swift */,
