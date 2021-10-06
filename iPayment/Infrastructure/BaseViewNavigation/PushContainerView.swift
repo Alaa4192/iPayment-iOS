@@ -15,7 +15,7 @@ struct PushContainer<Content: View> : View {
         GeometryReader { proxy in
             self.generateBody(proxy: proxy)
         }
-        .animation(.default)
+        // .animation(.default)
     }
 
     init(content: Content) {

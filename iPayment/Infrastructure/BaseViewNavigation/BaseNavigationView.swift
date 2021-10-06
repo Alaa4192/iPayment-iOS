@@ -17,12 +17,11 @@ struct BaseNavigationView<Content>: View where Content: View {
             GeometryReader { geometry in
                 ZStack(alignment: .center) {
                     self.content()
-                    if self.model.mainView != nil {
-                        NavigationLink(destination: self.model.mainView!, isActive: self.$model.isPushActive, label: {
-                            EmptyView()
-                        })
-                        .isDetailLink(false)
-                    }
+
+                    NavigationLink(destination: self.model.mainView ?? AnyView(EmptyView()), isActive: self.$model.isPushActive, label: {
+                        EmptyView()
+                    })
+                    .isDetailLink(false)
                 }
             }
             .navigationBarTitle(Text(self.$model.title.wrappedValue))
