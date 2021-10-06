@@ -39,6 +39,16 @@ struct GroupFormView: BaseView {
                     if self.$sharedGroup.wrappedValue {
                         Section(header: Text("Group Members")) {
                             TextField("Search", text: $searchedText)
+
+
+
+                            VStack(alignment: .leading, spacing: 4) {
+                                ForEach(self.viewModel.users, id: \.self) { user in
+                                    UserItemView(user: user)
+
+                                    
+                                }
+                            }
                         }
                     }
 
@@ -71,6 +81,18 @@ struct GroupFormView: BaseView {
     }
 }
 
+struct UserItemView: View {
+    var user: UserModel
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("\(user.firstName ?? "") \(user.lastName ?? "")")
+            Text("\(user.email ?? "Email")")
+        }
+        .padding(8)
+    }
+}
+
 struct GroupType {
     static let allTypes = [
         "General",
@@ -79,8 +101,18 @@ struct GroupType {
     ]
 }
 
+
+struct UserItemView_Previews: PreviewProvider {
+    static var previews: some View {
+
+        UserItemView(user: UserModel.create(firstName: "Alaa"))
+            .previewLayout(.sizeThatFits)
+    }
+}
+
 struct GroupFormView_Previews: PreviewProvider {
     static var previews: some View {
         GroupFormView()
+            .previewLayout(.sizeThatFits)
     }
 }

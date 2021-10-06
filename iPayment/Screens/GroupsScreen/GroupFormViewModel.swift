@@ -9,5 +9,15 @@
 import Foundation
 
 class GroupFormViewModel: BaseViewModel {
+
+    @Published public var users: Array<UserModel> = Array()
+
+    override init() {
+        super.init()
+
+        UsersRepository().getUsers { result in
+            self.users = result.items
+        }
+    }
     
 }

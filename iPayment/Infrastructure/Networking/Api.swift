@@ -12,24 +12,6 @@ import Alamofire
 class Api {
     fileprivate let host: String = "https://vast-badlands-01149.herokuapp.com"
 
-//    func koko(endpoint: String) {
-//        guard let url = URL(string: endpoint) else {
-//            print("Invalid url...")
-//            return
-//        }
-//
-//        var request = URLRequest(url: url)
-//        request.httpMethod = ""
-//
-//        URLSession.shared.dataTask(with: url) { data, response, error in
-//            let groups = try! JSONDecoder().decode(BaseListModel<GroupModel>.self, from: data!)
-//
-//            print(groups)
-//            DispatchQueue.main.async {
-//                // completion(books)
-//            }
-//        }.resume()
-//    }
 
     fileprivate func doPostRequest<T: Decodable>(endpoint: String, encodedJson: Any, type: T.Type, result: @escaping (T) -> Void) {
         do {
@@ -61,11 +43,22 @@ class Api {
         }
     }
 
-
 }
 
 class GroupsRepository: Api {
+    private lazy var v1_getGroups = "\(host)/v1/getGroups"
+
     func getGroups(result: @escaping (BaseListModel<GroupModel>) -> Void) {
-        doGetRequest(endpoint: "\(host)/v1/getGroups", type: BaseListModel<GroupModel>.self, result: result)
+        doGetRequest(endpoint: v1_getGroups, type: BaseListModel<GroupModel>.self, result: result)
+    }
+}
+
+class UsersRepository: Api {
+    private lazy var v1_getUsers = "\(host)/v1/getUsers"
+
+
+    func getUsers(result: @escaping (BaseListModel<UserModel>) -> Void) {
+
+        doGetRequest(endpoint: v1_getUsers, type: BaseListModel<UserModel>.self, result: result)
     }
 }
