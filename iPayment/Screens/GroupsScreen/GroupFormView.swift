@@ -43,10 +43,11 @@ struct GroupFormView: BaseView {
 
 
                             VStack(alignment: .leading, spacing: 4) {
-                                ForEach(self.viewModel.users, id: \.self) { user in
+                                ForEach(self.viewModel.users, id: \.self.userModel.uid) { user in
                                     UserItemView(user: user)
-
-                                    
+                                        .onTapGesture {
+                                            viewModel.onUserSelected(uid: user.userModel.uid)
+                                        }
                                 }
                             }
                         }
@@ -82,14 +83,24 @@ struct GroupFormView: BaseView {
 }
 
 struct UserItemView: View {
-    var user: UserModel
+    @ObservedObject var user: UserViewModel
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("\(user.firstName ?? "") \(user.lastName ?? "")")
-            Text("\(user.email ?? "Email")")
+        HStack {
+            VStack(alignment: .leading) {
+                Text("\(user.userModel.firstName ?? "") \(user.userModel.lastName ?? "")")
+                Text("\(user.userModel.email ?? "Email")")
+            }
+            Spacer()
+
+            if $user.isSelected.wrappedValue {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundColor(Colors.darkBlue)
+
+            }
         }
         .padding(8)
+        .background(Colors.white)
     }
 }
 
@@ -105,7 +116,7 @@ struct GroupType {
 struct UserItemView_Previews: PreviewProvider {
     static var previews: some View {
 
-        UserItemView(user: UserModel.create(firstName: "Alaa"))
+        UserItemView(user: UserViewModel.create(firstName: "Alaa"))
             .previewLayout(.sizeThatFits)
     }
 }

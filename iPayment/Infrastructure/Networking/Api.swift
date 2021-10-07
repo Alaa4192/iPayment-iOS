@@ -34,6 +34,9 @@ class Api {
     fileprivate func doGetRequest<T: Decodable>(endpoint: String, type: T.Type, result: @escaping (T) -> Void) {
         AF.request(endpoint, method: .get)
             .validate()
+//            .responseString { result in
+//                print(result)
+//            }
             .responseDecodable(of: type.self) { (response) in
                 guard let res = response.value else { return }
                 // print(res)

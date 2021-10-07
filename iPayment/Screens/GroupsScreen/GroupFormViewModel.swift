@@ -10,14 +10,21 @@ import Foundation
 
 class GroupFormViewModel: BaseViewModel {
 
-    @Published public var users: Array<UserModel> = Array()
+    @Published public var users: Array<UserViewModel> = Array()
 
     override init() {
         super.init()
 
         UsersRepository().getUsers { result in
-            self.users = result.items
+            self.users = result.items.map { $0.convert()}
         }
+    }
+
+    func onUserSelected(uid: String) {
+        if var userViewModel = users.first(where: { $0.userModel.uid == uid }) {
+            userViewModel.isSelected.toggle()
+        }
+
     }
     
 }
