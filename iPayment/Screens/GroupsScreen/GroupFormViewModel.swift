@@ -8,9 +8,10 @@
 
 import Foundation
 
-class GroupFormViewModel: BaseViewModel {
+class GroupFormViewModel: BaseViewModel, ObservableObject {
 
     @Published public var users: Array<UserViewModel> = Array()
+    @Published var isLoading: Bool = false
 
     override init() {
         super.init()
@@ -26,5 +27,16 @@ class GroupFormViewModel: BaseViewModel {
         }
 
     }
-    
+
+    func createGroup(groupName: String, isSharedGroup: Bool, type: String, onSuccess: @escaping () -> Void) {
+        isLoading = true
+        let usersId = self.users.filter({ $0.isSelected }).map { $0.userModel.uid }
+
+        GroupsRepository().createGroup(
+            group: CreateGroup(name: groupName, usersId: usersId, isShared: isSharedGroup, type: type)) {
+                self.isLoading = false
+
+                onSuccess()
+            }
+    }
 }

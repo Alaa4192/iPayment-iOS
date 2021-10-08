@@ -20,17 +20,6 @@ struct UserModel: Codable, Hashable {
     }
 }
 
-//struct UserViewModel: Codable, Hashable {
-//    var userModel: UserModel
-//    var isSelected: Bool
-//
-//    static func create(firstName: String) -> UserViewModel {
-//        return UserViewModel(
-//            userModel: UserModel(uid: "UID", firstName: firstName, lastName: "Last Name", email: "Email"),
-//            isSelected: true)
-//    }
-//}
-
 class UserViewModel : ObservableObject {
 
     @Published var userModel: UserModel

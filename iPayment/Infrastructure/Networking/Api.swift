@@ -8,31 +8,22 @@
 
 import SwiftUI
 import Alamofire
+import Firebase
 
 class Api {
     fileprivate let host: String = "https://vast-badlands-01149.herokuapp.com"
 
 
-    fileprivate func doPostRequest<T: Decodable>(endpoint: String, encodedJson: Any, type: T.Type, result: @escaping (T) -> Void) {
-        do {
-            let json = try JSONSerialization.data(withJSONObject: encodedJson, options: []) as? [String : Any]
-
-            AF.request(endpoint, method: .post, parameters: json, encoding: JSONEncoding.default)
-                .validate()
-                .responseDecodable(of: type.self) { (response) in
-                    guard let res = response.value else { return }
-                    // print(res)
-                    DispatchQueue.main.async {
-                        result(res)
-                    }
+    fileprivate func doPostRequest<T: Decodable, E: Encodable>(endpoint: String, encodedJson: E, type: T.Type, result: @escaping () -> Void) {
+        AF.request(endpoint, method: .post, parameters: encodedJson, encoder: JSONParameterEncoder.default, headers: getHeaders())
+            .responseString { res in
+                print(res)
+                result()
             }
-        } catch {
-             print(error.localizedDescription)
-        }
     }
 
     fileprivate func doGetRequest<T: Decodable>(endpoint: String, type: T.Type, result: @escaping (T) -> Void) {
-        AF.request(endpoint, method: .get)
+        AF.request(endpoint, method: .get, headers: getHeaders())
             .validate()
 //            .responseString { result in
 //                print(result)
@@ -46,13 +37,29 @@ class Api {
         }
     }
 
+    private func getHeaders() -> HTTPHeaders {
+        return [
+            HTTPHeader(name: "uid", value: Auth.auth().currentUser?.uid ?? "")
+        ]
+    }
+
 }
 
 class GroupsRepository: Api {
     private lazy var v1_getGroups = "\(host)/v1/getGroups"
+    private lazy var v1_createGroup = "\(host)/v1/createGroup"
 
     func getGroups(result: @escaping (BaseListModel<GroupModel>) -> Void) {
         doGetRequest(endpoint: v1_getGroups, type: BaseListModel<GroupModel>.self, result: result)
+    }
+
+    func createGroup(group: CreateGroup, result: @escaping () -> Void) {
+        doPostRequest(
+            endpoint: v1_createGroup,
+            encodedJson: group,
+            type: CreateGroupResponse.self) {
+                result()
+        }
     }
 }
 

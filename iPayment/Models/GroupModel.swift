@@ -8,14 +8,36 @@
 
 import Foundation
 
+struct GroupData: Codable, Hashable {
+    var isShared: Bool
+    var type: String
+
+    static func create() -> GroupData {
+        return GroupData(isShared: false, type: "CAR")
+    }
+}
+
 struct GroupModel: Codable, Hashable {
     var id: String
     var name: String
+    var data: GroupData
     var isFavorite: Bool
+    var isDeleted: Bool
+    var createdDate: Double
     var usersId: Array<String>?
+    var adminsId: Array<String>?
 
     static func create(name: String, isFavorite: Bool) -> GroupModel {
-        return GroupModel(id: "ID", name: name, isFavorite: isFavorite, usersId: [])
+        return GroupModel(
+            id: "ID",
+            name: name,
+            data: GroupData.create(),
+            isFavorite: isFavorite,
+            isDeleted: false,
+            createdDate: 0,
+            usersId: [],
+            adminsId: []
+        )
     }
 
     func getUsersCount() -> Int {
@@ -23,3 +45,13 @@ struct GroupModel: Codable, Hashable {
     }
 }
 
+struct CreateGroup: Codable {
+    let name: String
+    let usersId: Array<String>
+    let isShared: Bool
+    let type: String
+}
+
+struct CreateGroupResponse: Codable {
+    var id: String
+}
