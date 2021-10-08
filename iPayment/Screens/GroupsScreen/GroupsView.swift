@@ -36,14 +36,23 @@ struct GroupsView: BaseView {
                                                         })
                 )
 
-                viewModel.loadGroups { groups in
-                    isLoading = false
-                    items = groups
-                }
+                loadGroups()
             }
         }
-        .sheet(isPresented: self.$showGroupForm) {
-            GroupFormView()
+        .sheet(
+            isPresented: self.$showGroupForm,
+            onDismiss: {
+                isLoading = true
+                loadGroups()
+            }) {
+                GroupFormView()
+            }
+    }
+
+    private func loadGroups() {
+        viewModel.loadGroups { groups in
+            isLoading = false
+            items = groups
         }
     }
 }
