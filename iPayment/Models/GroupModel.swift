@@ -23,7 +23,7 @@ struct GroupModel: Codable, Hashable {
     var data: GroupData
     var isFavorite: Bool
     var isDeleted: Bool
-    var createdDate: Double
+    var createdDate: Int64
     var usersId: Array<String>?
     var adminsId: Array<String>?
 

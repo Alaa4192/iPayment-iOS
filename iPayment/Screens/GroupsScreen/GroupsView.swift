@@ -61,19 +61,54 @@ struct GroupItemView: View {
     let group: GroupModel
 
     var body: some View {
-        HStack {
-            Text(group.name)
-            Spacer()
+        VStack {
+            HStack {
+                Text(group.name)
+                Spacer()
 
-            if group.isFavorite {
-                Image(systemName: "star.fill")
+
+                VStack(alignment: .trailing) {
+                    HStack {
+                        if group.isFavorite {
+                            Image(systemName: "star.fill")
+                        }
+
+                        Group {
+                            Image(systemName: "person.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 12, height: 12)
+
+                            Text("(\(group.getUsersCount()))")
+                                .font(.caption)
+                        }
+                        .opacity(group.getUsersCount() > 1 ? 1 : 0)
+                    }
+
+                    Text(getDate(group.createdDate))
+                        .font(.caption)
+                        .padding(.top, 2)
+                        .foregroundColor(.gray)
+                }
             }
+            .padding(.horizontal)
+            .padding(.vertical, 4)
+            .background(Colors.white)
 
-            Image(systemName: "person.fill")
-            Text("(\(group.getUsersCount()))")
+            Divider()
+                .padding(.horizontal)
+                .opacity(0.4)
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 12)
+    }
+
+    private func getDate(_ createdDate: Int64) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+
+        let time = Double(createdDate / 1000)
+
+        return dateFormatter.string(from: Date(timeIntervalSince1970: time))
     }
 }
 
