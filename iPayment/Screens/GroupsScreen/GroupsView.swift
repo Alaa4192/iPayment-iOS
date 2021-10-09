@@ -21,49 +21,9 @@ struct GroupsView: BaseView {
             ScrollView {
                 VStack {
                     if self.viewModel.groups.count > 0 {
-                        ForEach(self.viewModel.groups, id: \.self) { group in
-                            GroupItemView(group: group)
-                                .onTapGesture {
-                                    self.navigationModel.pushMain(view: GroupView(group: group))
-                                }
-                                .contextMenu {
-                                    Button {
-                                        viewModel.setFavorite(group.id, !group.isFavorite)
-                                    } label: {
-                                        HStack {
-                                            Image(systemName: "star.fill")
-                                            if !group.isFavorite {
-                                                Text("Add to favorites")
-                                            } else {
-                                                Text("Remove from favorites")
-                                            }
-                                        }
-                                    }
-
-                                    Button {
-                                        print("Remove Group")
-                                        self.showWarningDialog = true
-
-                                    } label: {
-                                        HStack {
-                                            Image(systemName: "trash.slash.fill")
-                                            Text("Remove")
-                                        }
-                                    }
-                                }
-                                .alert(isPresented: self.$showWarningDialog, content: {
-                                    Alert(
-                                        title: Text("Remove Group"),
-                                        message: Text("Are you sure?"),
-                                        primaryButton: Alert.Button.default(Text("Yes")) {
-                                            viewModel.removeGroup(group.id)
-                                        },
-                                        secondaryButton: Alert.Button.cancel())
-                                })
-                        }
+                        listView
                     } else {
-                        Spacer(minLength: 50)
-                        Text("Create your first group")
+                        emptyView
                     }
                 }
             }
@@ -84,6 +44,55 @@ struct GroupsView: BaseView {
             }) {
                 GroupFormView()
             }
+    }
+
+    private var listView: some View {
+        ForEach(self.viewModel.groups, id: \.self) { group in
+            GroupItemView(group: group)
+                .onTapGesture {
+                    self.navigationModel.pushMain(view: GroupView(group: group))
+                }
+                .contextMenu {
+                    Button {
+                        self.viewModel.setFavorite(group.id, !group.isFavorite)
+                    } label: {
+                        HStack {
+                            Image(systemName: "star.fill")
+                            if !group.isFavorite {
+                                Text("Add to favorites")
+                            } else {
+                                Text("Remove from favorites")
+                            }
+                        }
+                    }
+
+
+                    Button {
+                        self.showWarningDialog = true
+                    } label: {
+                        HStack {
+                            Image(systemName: "trash.slash.fill")
+                            Text("Remove")
+                        }
+                    }
+                }
+                .alert(isPresented: self.$showWarningDialog, content: {
+                    Alert(
+                        title: Text("Remove Group"),
+                        message: Text("Are you sure?"),
+                        primaryButton: Alert.Button.default(Text("Yes")) {
+                            viewModel.removeGroup(group.id)
+                        },
+                        secondaryButton: Alert.Button.cancel())
+                })
+        }
+    }
+
+    private var emptyView: some View {
+        Group {
+            Spacer(minLength: 50)
+            Text("Create your first group")
+        }
     }
 }
 
