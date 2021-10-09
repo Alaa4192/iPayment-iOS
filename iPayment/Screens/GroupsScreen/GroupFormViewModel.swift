@@ -9,7 +9,6 @@
 import Foundation
 
 class GroupFormViewModel: BaseViewModel, ObservableObject {
-
     @Published public var users: Array<UserViewModel> = Array()
     @Published var isLoading: Bool = false
 

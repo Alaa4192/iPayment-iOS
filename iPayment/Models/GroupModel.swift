@@ -55,3 +55,13 @@ struct CreateGroup: Codable {
 struct CreateGroupResponse: Codable {
     var id: String
 }
+
+struct SetGroupFavoriteRequest: Codable {
+    var id: String
+    var isFavorite: Bool
+}
+
+struct SetGroupFavoriteResponse: Codable {
+    var id: String
+}
+

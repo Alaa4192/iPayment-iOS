@@ -11,24 +11,22 @@ import SwiftUI
 struct GroupsView: BaseView {
     @EnvironmentObject var navigationModel: BaseNavigationModel
 
-    @State var isLoading: Bool = true
-    @State var items: Array<GroupModel> = Array()
     @State var showGroupForm: Bool = false
 
-    var viewModel = GroupsViewModel()
+    @ObservedObject var viewModel = GroupsViewModel()
 
     var body: some View {
-        LoadingView(isShowing: .constant($isLoading.wrappedValue)) {
+        LoadingView(isShowing: self.$viewModel.isLoading) {
             ScrollView {
                 VStack {
-                    ForEach(items, id: \.self) { group in
+                    ForEach(self.viewModel.groups, id: \.self) { group in
                         GroupItemView(group: group)
                             .onTapGesture {
                                 self.navigationModel.pushMain(view: GroupView(group: group))
                             }
                             .contextMenu {
                                 Button {
-                                    print("Add to favorites / Remove from favorites")
+                                    viewModel.setFavorite(group.id, !group.isFavorite)
                                 } label: {
                                     HStack {
                                         Image(systemName: "star.fill")
@@ -59,24 +57,16 @@ struct GroupsView: BaseView {
                                                         })
                 )
 
-                loadGroups()
+                viewModel.loadGroups()
             }
         }
         .sheet(
             isPresented: self.$showGroupForm,
             onDismiss: {
-                isLoading = true
-                loadGroups()
+                viewModel.loadGroups()
             }) {
                 GroupFormView()
             }
-    }
-
-    private func loadGroups() {
-        viewModel.loadGroups { groups in
-            isLoading = false
-            items = groups
-        }
     }
 }
 

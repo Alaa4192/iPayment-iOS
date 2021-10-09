@@ -8,11 +8,30 @@
 
 import SwiftUI
 
-class GroupsViewModel: BaseViewModel{
+class GroupsViewModel: BaseViewModel, ObservableObject {
+    @Published var groups = Array<GroupModel>()
+    @Published var isLoading: Bool = false
 
-    func loadGroups(groups: @escaping (Array<GroupModel>) -> Void) {
+    override init() {
+        super.init()
+
+        loadGroups()
+    }
+
+    func loadGroups() {
+        self.isLoading = true
         GroupsRepository().getGroups { result in
-            groups(result.items)
+            self.groups = result.items
+            self.isLoading = false
+        }
+    }
+
+    func setFavorite(_ id: String, _ isFavorite: Bool) {
+        self.isLoading = true
+
+        GroupsRepository().setGroupFavorite(
+            request: SetGroupFavoriteRequest(id: id, isFavorite: isFavorite)) {
+                self.loadGroups()
         }
     }
 
