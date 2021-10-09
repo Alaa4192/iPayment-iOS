@@ -26,6 +26,29 @@ struct GroupsView: BaseView {
                             .onTapGesture {
                                 self.navigationModel.pushMain(view: GroupView(group: group))
                             }
+                            .contextMenu {
+                                Button {
+                                    print("Add to favorites / Remove from favorites")
+                                } label: {
+                                    HStack {
+                                        Image(systemName: "star.fill")
+                                        if !group.isFavorite {
+                                            Text("Add to favorites")
+                                        } else {
+                                            Text("Remove from favorites")
+                                        }
+                                    }
+                                }
+
+                                Button {
+                                    print("Remove Group")
+                                } label: {
+                                    HStack {
+                                        Image(systemName: "trash.slash.fill")
+                                        Text("Remove")
+                                    }
+                                }
+                            }
                     }
                 }
             }
@@ -66,13 +89,8 @@ struct GroupItemView: View {
                 Text(group.name)
                 Spacer()
 
-
                 VStack(alignment: .trailing) {
                     HStack {
-                        if group.isFavorite {
-                            Image(systemName: "star.fill")
-                        }
-
                         Group {
                             Image(systemName: "person.fill")
                                 .resizable()
@@ -83,6 +101,10 @@ struct GroupItemView: View {
                                 .font(.caption)
                         }
                         .opacity(group.getUsersCount() > 1 ? 1 : 0)
+
+                        if group.isFavorite {
+                            Image(systemName: "star.fill")
+                        }
                     }
 
                     Text(getDate(group.createdDate))
