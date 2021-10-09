@@ -97,6 +97,8 @@ struct UserItemView: View {
             VStack(alignment: .leading) {
                 Text("\(user.userModel.firstName ?? "") \(user.userModel.lastName ?? "")")
                 Text("\(user.userModel.email ?? "Email")")
+                    .font(.caption)
+                    .foregroundColor(.gray)
             }
             Spacer()
 

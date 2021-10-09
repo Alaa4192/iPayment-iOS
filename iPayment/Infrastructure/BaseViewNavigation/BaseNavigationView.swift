@@ -25,7 +25,10 @@ struct BaseNavigationView<Content>: View where Content: View {
                 }
             }
             .navigationBarTitle(Text(self.$model.title.wrappedValue))
-            .navigationBarItems(trailing: self.$model.navigationBarItems.wrappedValue)
+            .navigationBarItems(
+                leading: self.$model.leadingNavigationBarItems.wrappedValue,
+                trailing: self.$model.trailingNavigationBarItems.wrappedValue
+            )
         }
     }
 }

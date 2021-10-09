@@ -7,7 +7,21 @@
 //
 
 import SwiftUI
+import Firebase
 
-class ProfileViewModel: BaseViewModel {
+class ProfileViewModel: BaseViewModel, ObservableObject {
+
+    override init() {
+        super.init()
+    }
+
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+
+        } catch {
+
+        }
+    }
 
 }

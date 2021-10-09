@@ -14,10 +14,13 @@ struct MainView: BaseView {
 
     var viewModel = MainViewModel()
 
+    let groupsView = GroupsView()
+    let profileView = ProfileView()
+
     var body: some View {
         BaseNavigationView(model: navigationModel) {
             TabView {
-                GroupsView().environmentObject(self.navigationModel)
+                groupsView.environmentObject(self.navigationModel)
                     .onAppear {
                         navigationModel.setTitle(title: "Groups")
                     }
@@ -26,7 +29,7 @@ struct MainView: BaseView {
                         Text("Groups")
                     }
 
-                ProfileView().environmentObject(self.navigationModel)
+                profileView.environmentObject(self.navigationModel)
                     .onAppear {
                         navigationModel.setTitle(title: "Profile")
                     }

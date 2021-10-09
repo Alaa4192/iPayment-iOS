@@ -7,25 +7,25 @@
 //
 
 import SwiftUI
-import Firebase
 
-struct ProfileView: View {
+struct ProfileView: BaseView {
     @EnvironmentObject var navigationModel: BaseNavigationModel
-    
+
+    @ObservedObject var viewModel = ProfileViewModel()
+
     var body: some View {
         VStack {
             Spacer()
 
             Button(action: {
-                do {
-                    try Auth.auth().signOut()
-                } catch {
-
-                }
+                viewModel.signOut()
             }, label: {
                 Text("Sign out")
             })
             .padding()
+        }
+        .onAppear {
+            navigationModel.clearNavigationsBarItems()
         }
     }
 }

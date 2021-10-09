@@ -28,14 +28,19 @@ struct GroupsView: BaseView {
                 }
             }
             .onAppear {
-                navigationModel.setNavigationBarItems(navigationBarItems:
+                navigationModel.setLeadingNavigationBarItems(navigationBarItems:
+                                                        AnyView(Button("Refresh") {
+                    viewModel.loadGroups()
+                }))
+
+                navigationModel.setTrailingNavigationBarItems(navigationBarItems:
                                                         AnyView(Button("Create") {
-                                                            self.showGroupForm = true
-                                                        })
-                )
+                    self.showGroupForm = true
+                }))
 
                 viewModel.loadGroups()
             }
+
         }
         .sheet(
             isPresented: self.$showGroupForm,
@@ -66,13 +71,14 @@ struct GroupsView: BaseView {
                         }
                     }
 
-
-                    Button {
-                        self.showWarningDialog = true
-                    } label: {
-                        HStack {
-                            Image(systemName: "trash.slash.fill")
-                            Text("Remove")
+                    if group.permissions?.canDelete ?? false {
+                        Button {
+                            self.showWarningDialog = true
+                        } label: {
+                            HStack {
+                                Image(systemName: "trash.slash.fill")
+                                Text("Remove")
+                            }
                         }
                     }
                 }
@@ -123,7 +129,7 @@ struct GroupItemView: View {
                         }
                     }
 
-                    Text(getDate(group.createdDate))
+                    Text(getDate(group.createdDate ?? 0))
                         .font(.caption)
                         .padding(.top, 2)
                         .foregroundColor(.gray)

@@ -17,15 +17,21 @@ struct GroupData: Codable, Hashable {
     }
 }
 
+struct Permissions: Codable, Hashable {
+    var canDelete: Bool
+}
+
 struct GroupModel: Codable, Hashable {
     var id: String
     var name: String
     var data: GroupData
     var isFavorite: Bool
     var isDeleted: Bool
-    var createdDate: Int64
+    var createdDate: Int64?
     var usersId: Array<String>?
     var adminsId: Array<String>?
+
+    var permissions: Permissions?
 
     static func create(name: String, isFavorite: Bool) -> GroupModel {
         return GroupModel(
