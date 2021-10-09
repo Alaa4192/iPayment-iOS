@@ -49,6 +49,7 @@ class GroupsRepository: Api {
     private lazy var v1_getGroups = "\(host)/v1/getGroups"
     private lazy var v1_createGroup = "\(host)/v1/createGroup"
     private lazy var v1_setFavorite = "\(host)/v1/setFavorite"
+    private lazy var v1_removeGroup = "\(host)/v1/removeGroup"
 
     func getGroups(result: @escaping (BaseListModel<GroupModel>) -> Void) {
         doGetRequest(endpoint: v1_getGroups, type: BaseListModel<GroupModel>.self, result: result)
@@ -65,6 +66,12 @@ class GroupsRepository: Api {
 
     func setGroupFavorite(request: SetGroupFavoriteRequest, result: @escaping () -> Void) {
         doPostRequest(endpoint: v1_setFavorite, encodedJson: request, type: SetGroupFavoriteResponse.self) {
+            result()
+        }
+    }
+
+    func removeGroup(request: RemoveGroupRequest, result: @escaping () -> Void) {
+        doPostRequest(endpoint: v1_removeGroup, encodedJson: request, type: RemoveGroupResponse.self) {
             result()
         }
     }

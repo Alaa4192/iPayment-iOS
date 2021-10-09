@@ -65,3 +65,10 @@ struct SetGroupFavoriteResponse: Codable {
     var id: String
 }
 
+struct RemoveGroupRequest: Codable {
+    var id: String
+}
+
+struct RemoveGroupResponse: Codable {
+    var id: String
+}

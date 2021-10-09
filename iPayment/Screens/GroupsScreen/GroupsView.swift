@@ -12,6 +12,7 @@ struct GroupsView: BaseView {
     @EnvironmentObject var navigationModel: BaseNavigationModel
 
     @State var showGroupForm: Bool = false
+    @State var showWarningDialog: Bool = false
 
     @ObservedObject var viewModel = GroupsViewModel()
 
@@ -19,34 +20,50 @@ struct GroupsView: BaseView {
         LoadingView(isShowing: self.$viewModel.isLoading) {
             ScrollView {
                 VStack {
-                    ForEach(self.viewModel.groups, id: \.self) { group in
-                        GroupItemView(group: group)
-                            .onTapGesture {
-                                self.navigationModel.pushMain(view: GroupView(group: group))
-                            }
-                            .contextMenu {
-                                Button {
-                                    viewModel.setFavorite(group.id, !group.isFavorite)
-                                } label: {
-                                    HStack {
-                                        Image(systemName: "star.fill")
-                                        if !group.isFavorite {
-                                            Text("Add to favorites")
-                                        } else {
-                                            Text("Remove from favorites")
+                    if self.viewModel.groups.count > 0 {
+                        ForEach(self.viewModel.groups, id: \.self) { group in
+                            GroupItemView(group: group)
+                                .onTapGesture {
+                                    self.navigationModel.pushMain(view: GroupView(group: group))
+                                }
+                                .contextMenu {
+                                    Button {
+                                        viewModel.setFavorite(group.id, !group.isFavorite)
+                                    } label: {
+                                        HStack {
+                                            Image(systemName: "star.fill")
+                                            if !group.isFavorite {
+                                                Text("Add to favorites")
+                                            } else {
+                                                Text("Remove from favorites")
+                                            }
+                                        }
+                                    }
+
+                                    Button {
+                                        print("Remove Group")
+                                        self.showWarningDialog = true
+
+                                    } label: {
+                                        HStack {
+                                            Image(systemName: "trash.slash.fill")
+                                            Text("Remove")
                                         }
                                     }
                                 }
-
-                                Button {
-                                    print("Remove Group")
-                                } label: {
-                                    HStack {
-                                        Image(systemName: "trash.slash.fill")
-                                        Text("Remove")
-                                    }
-                                }
-                            }
+                                .alert(isPresented: self.$showWarningDialog, content: {
+                                    Alert(
+                                        title: Text("Remove Group"),
+                                        message: Text("Are you sure?"),
+                                        primaryButton: Alert.Button.default(Text("Yes")) {
+                                            viewModel.removeGroup(group.id)
+                                        },
+                                        secondaryButton: Alert.Button.cancel())
+                                })
+                        }
+                    } else {
+                        Spacer(minLength: 50)
+                        Text("Create your first group")
                     }
                 }
             }

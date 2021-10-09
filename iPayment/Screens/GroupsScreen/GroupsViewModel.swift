@@ -21,7 +21,7 @@ class GroupsViewModel: BaseViewModel, ObservableObject {
     func loadGroups() {
         self.isLoading = true
         GroupsRepository().getGroups { result in
-            self.groups = result.items
+            self.groups = result.items.filter({ !$0.isDeleted })
             self.isLoading = false
         }
     }
@@ -32,6 +32,14 @@ class GroupsViewModel: BaseViewModel, ObservableObject {
         GroupsRepository().setGroupFavorite(
             request: SetGroupFavoriteRequest(id: id, isFavorite: isFavorite)) {
                 self.loadGroups()
+        }
+    }
+
+    func removeGroup(_ id: String) {
+        self.isLoading = true
+
+        GroupsRepository().removeGroup(request: RemoveGroupRequest(id: id)) {
+            self.loadGroups()
         }
     }
 
