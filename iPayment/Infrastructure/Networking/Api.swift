@@ -79,10 +79,13 @@ class GroupsRepository: Api {
 
 class UsersRepository: Api {
     private lazy var v1_getUsers = "\(host)/v1/getUsers"
-
+    private lazy var v1_getUserProfile = "\(host)/v1/getUserProfile"
 
     func getUsers(result: @escaping (BaseListModel<UserModel>) -> Void) {
-
         doGetRequest(endpoint: v1_getUsers, type: BaseListModel<UserModel>.self, result: result)
+    }
+
+    func getUserProfile(result: @escaping (UserProfileModel) -> Void) {
+        doGetRequest(endpoint: v1_getUserProfile, type: UserProfileModel.self, result: result)
     }
 }

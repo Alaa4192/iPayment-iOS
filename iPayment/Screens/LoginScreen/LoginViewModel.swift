@@ -18,12 +18,18 @@ class LoginViewModel: BaseViewModel {
             if user != nil {
                 print("LoginViewModel", "loginIsNeeded", false)
                 onResult(false)
-                userSession.session = user?.uid
+
+                DispatchQueue.main.async {
+                    userSession.session = user?.uid
+                }
+
             } else {
                 print("LoginViewModel", "loginIsNeeded", true)
                 onResult(true)
 
-                userSession.session = nil
+                DispatchQueue.main.async {
+                    userSession.session = nil
+                }
             }
         }
     }

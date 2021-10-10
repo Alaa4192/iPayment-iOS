@@ -10,9 +10,13 @@ import SwiftUI
 import Firebase
 
 class ProfileViewModel: BaseViewModel, ObservableObject {
+    @Published var userProfile: Binding<UserProfileModel>? = nil
+
 
     override init() {
         super.init()
+
+        self.loadProfile()
     }
 
     func signOut(onSuccess: @escaping () -> Void) {
@@ -21,6 +25,12 @@ class ProfileViewModel: BaseViewModel, ObservableObject {
             onSuccess()
         } catch {
 
+        }
+    }
+
+    private func loadProfile() {
+        UsersRepository().getUserProfile { result in
+            self.userProfile = .constant(result)
         }
     }
 

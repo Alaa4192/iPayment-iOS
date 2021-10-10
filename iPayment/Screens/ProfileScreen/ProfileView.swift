@@ -15,18 +15,33 @@ struct ProfileView: BaseView {
     @ObservedObject var viewModel = ProfileViewModel()
 
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            if self.$viewModel.userProfile.wrappedValue != nil {
+                HStack {
+                    Text(self.viewModel.userProfile?.firstName.wrappedValue ?? "")
+                    Text(self.viewModel.userProfile?.lastName.wrappedValue ?? "")
+                }
+
+                Text("Groups: \(self.viewModel.userProfile?.groupsCount.wrappedValue ?? 0)")
+                    .padding(.top, 8)
+            }
+
             Spacer()
 
-            Button(action: {
-                viewModel.signOut {
-                    userSession.session = nil
-                }
-            }, label: {
-                Text("Sign out")
-            })
-            .padding()
+            Group {
+                Button(action: {
+                    viewModel.signOut {
+                        userSession.session = nil
+                    }
+                }, label: {
+                    Text("Sign out")
+                })
+                .padding()
+            }
+            .frame(maxWidth: .infinity, alignment: .center)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .padding()
         .onAppear {
             navigationModel.clearNavigationsBarItems()
         }
