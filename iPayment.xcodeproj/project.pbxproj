@@ -38,6 +38,7 @@
 		FE86A09924D320A300A8A627 /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86A09824D320A300A8A627 /* DefaultButton.swift */; };
 		FE86A09B24D35F4F00A8A627 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86A09A24D35F4F00A8A627 /* DefaultTextField.swift */; };
 		FE86A09D24D3614900A8A627 /* DefaultSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86A09C24D3614900A8A627 /* DefaultSecureField.swift */; };
+		FEBDFEFE27137DAD0070F8CB /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBDFEFD27137DAD0070F8CB /* UserSession.swift */; };
 		FECDE39424DB737900FAFA41 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECDE39324DB737900FAFA41 /* LoginViewModel.swift */; };
 		FECF5043270B89A00004E1C5 /* BaseNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECF5042270B89A00004E1C5 /* BaseNavigationView.swift */; };
 		FECF5045270B8A780004E1C5 /* BaseNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECF5044270B8A780004E1C5 /* BaseNavigationModel.swift */; };
@@ -80,6 +81,7 @@
 		FE86A09824D320A300A8A627 /* DefaultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
 		FE86A09A24D35F4F00A8A627 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
 		FE86A09C24D3614900A8A627 /* DefaultSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSecureField.swift; sourceTree = "<group>"; };
+		FEBDFEFD27137DAD0070F8CB /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		FECDE39324DB737900FAFA41 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FECF5042270B89A00004E1C5 /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
 		FECF5044270B8A780004E1C5 /* BaseNavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationModel.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				FE1F53C52701251100893621 /* Networking */,
 				FE1F53C127011ED900893621 /* BaseView.swift */,
 				FE1F53C3270120C700893621 /* BaseViewModel.swift */,
+				FEBDFEFD27137DAD0070F8CB /* UserSession.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				FE86A05D24D1E69200A8A627 /* ContentView.swift in Sources */,
 				FE80064A270D06B2005AECE5 /* GroupFormViewModel.swift in Sources */,
 				FE1F53CF27032A3A00893621 /* MainView.swift in Sources */,
+				FEBDFEFE27137DAD0070F8CB /* UserSession.swift in Sources */,
 				FE1F53D127032A6F00893621 /* MainViewModel.swift in Sources */,
 				FE1F53D627032B5C00893621 /* ProfileViewModel.swift in Sources */,
 				FE86A09924D320A300A8A627 /* DefaultButton.swift in Sources */,
@@ -565,6 +569,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iPayment/Preview Content\"";
+				DEVELOPMENT_TEAM = 2MT5XC3W26;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iPayment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -585,6 +590,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iPayment/Preview Content\"";
+				DEVELOPMENT_TEAM = 2MT5XC3W26;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iPayment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

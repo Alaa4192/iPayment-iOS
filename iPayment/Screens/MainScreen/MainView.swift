@@ -10,6 +10,8 @@ import SwiftUI
 
 struct MainView: BaseView {
 
+    @EnvironmentObject var userSession: UserSession
+
     var navigationModel = BaseNavigationModel()
 
     var viewModel = MainViewModel()
@@ -29,7 +31,9 @@ struct MainView: BaseView {
                         Text("Groups")
                     }
 
-                profileView.environmentObject(self.navigationModel)
+                profileView
+                    .environmentObject(self.navigationModel)
+                    .environmentObject(self.userSession)
                     .onAppear {
                         navigationModel.setTitle(title: "Profile")
                     }

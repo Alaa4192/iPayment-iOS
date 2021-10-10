@@ -15,10 +15,10 @@ class ProfileViewModel: BaseViewModel, ObservableObject {
         super.init()
     }
 
-    func signOut() {
+    func signOut(onSuccess: @escaping () -> Void) {
         do {
             try Auth.auth().signOut()
-
+            onSuccess()
         } catch {
 
         }

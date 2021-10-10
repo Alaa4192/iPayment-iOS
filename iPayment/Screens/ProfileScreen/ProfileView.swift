@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ProfileView: BaseView {
     @EnvironmentObject var navigationModel: BaseNavigationModel
+    @EnvironmentObject var userSession: UserSession
 
     @ObservedObject var viewModel = ProfileViewModel()
 
@@ -18,7 +19,9 @@ struct ProfileView: BaseView {
             Spacer()
 
             Button(action: {
-                viewModel.signOut()
+                viewModel.signOut {
+                    userSession.session = nil
+                }
             }, label: {
                 Text("Sign out")
             })

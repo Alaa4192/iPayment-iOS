@@ -11,21 +11,24 @@ import Firebase
 
 class LoginViewModel: BaseViewModel {
     
-    func loginIsNeeded(onResult: @escaping (_ isNeeded: Bool) -> Void) {
+    func loginIsNeeded(_ userSession: UserSession, onResult: @escaping (_ isNeeded: Bool) -> Void) {
         DispatchQueue.global(qos: .background).async {
             let user = Auth.auth().currentUser
             
             if user != nil {
                 print("LoginViewModel", "loginIsNeeded", false)
                 onResult(false)
+                userSession.session = user?.uid
             } else {
                 print("LoginViewModel", "loginIsNeeded", true)
                 onResult(true)
+
+                userSession.session = nil
             }
         }
     }
     
-    func performLogin(_ username: String, _ password: String, onError: @escaping (NSError) -> Void, onSuccess: @escaping () -> Void) {
+    func performLogin(_ userSession: UserSession, _ username: String, _ password: String, onError: @escaping (NSError) -> Void, onSuccess: @escaping () -> Void) {
         Auth.auth().signIn(withEmail: username, password: password) { authResult, error in
             
             
@@ -33,7 +36,9 @@ class LoginViewModel: BaseViewModel {
                 guard let result = authResult else { return }
                 
                 print("result", result)
-                
+
+                userSession.session = result.user.uid
+
                 onSuccess()
                 return
             }
