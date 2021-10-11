@@ -166,6 +166,15 @@
 			path = ProfileScreen;
 			sourceTree = "<group>";
 		};
+		FE62AACC2714DF0B003308B9 /* GroupFormScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FE800647270CDB95005AECE5 /* GroupFormView.swift */,
+				FE800649270D06B2005AECE5 /* GroupFormViewModel.swift */,
+			);
+			path = GroupFormScreen;
+			sourceTree = "<group>";
+		};
 		FE6CE08F24E808C60000C17F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +189,7 @@
 		FE80064B270E2E3F005AECE5 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				FE62AACC2714DF0B003308B9 /* GroupFormScreen */,
 				FE1F53D227032B4200893621 /* ProfileScreen */,
 				FE1F53CD27032A2D00893621 /* MainScreen */,
 				FE1F53C82703280800893621 /* GroupScreen */,
@@ -269,8 +279,6 @@
 			children = (
 				FE42339A2539CAD700C3AE0E /* GroupsView.swift */,
 				FE1F53BA26FFDC1C00893621 /* GroupsViewModel.swift */,
-				FE800647270CDB95005AECE5 /* GroupFormView.swift */,
-				FE800649270D06B2005AECE5 /* GroupFormViewModel.swift */,
 			);
 			path = GroupsScreen;
 			sourceTree = "<group>";
