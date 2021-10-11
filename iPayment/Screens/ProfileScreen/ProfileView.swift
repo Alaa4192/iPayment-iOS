@@ -15,10 +15,6 @@ struct ProfileView: BaseView {
     @ObservedObject var viewModel = ProfileViewModel()
 
     var body: some View {
-        new
-    }
-
-    private var new: some View {
         VStack {
             if self.$viewModel.userProfile.wrappedValue != nil {
                 Group {
@@ -27,7 +23,7 @@ struct ProfileView: BaseView {
                             VStack(alignment: .leading) {
                                 Text("Welcome back,")
                                     .font(.headline)
-                                Text(self.viewModel.userProfile?.firstName.wrappedValue ?? "")
+                                Text("\(self.viewModel.userProfile?.firstName.wrappedValue ?? "")!")
                                     .font(.title)
                                     .fontWeight(.bold)
                                     .padding(.top, 1)
@@ -55,17 +51,7 @@ struct ProfileView: BaseView {
 
             Spacer()
 
-            Group {
-                Button(action: {
-                    viewModel.signOut {
-                        userSession.session = nil
-                    }
-                }, label: {
-                    Text("Sign out")
-                })
-                .padding()
-            }
-            .frame(maxWidth: .infinity, alignment: .center)
+            SignoutView(viewModel: viewModel, userSession: userSession)
         }
         .onAppear {
             navigationModel.clearNavigationsBarItems()
@@ -114,6 +100,37 @@ struct ProfileIconView: View {
         let secondLetter = self.lastName?.first?.uppercased() ?? ""
 
         return "\(firstLetter)\(secondLetter)"
+    }
+}
+
+struct SignoutView: View {
+    let viewModel: ProfileViewModel
+    let userSession: UserSession
+
+    @State var showWarningDialog: Bool = false
+
+    var body: some View {
+        Group {
+            Button(action: {
+                self.showWarningDialog = true
+
+            }, label: {
+                Text("Sign out")
+            })
+            .padding()
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+        .alert(isPresented: self.$showWarningDialog) {
+            Alert(
+                title: Text("Sign out"),
+                message: Text("Are you sure?"),
+                primaryButton: Alert.Button.default(Text("Yes")) {
+                    viewModel.signOut {
+                        userSession.session = nil
+                    }
+                },
+                secondaryButton: Alert.Button.cancel())
+        }
     }
 }
 
