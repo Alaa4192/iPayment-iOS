@@ -22,6 +22,10 @@
 		FE1F53D627032B5C00893621 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53D527032B5C00893621 /* ProfileViewModel.swift */; };
 		FE42339B2539CAD700C3AE0E /* GroupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE42339A2539CAD700C3AE0E /* GroupsView.swift */; };
 		FE62791E2537619200ADC1A9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62791D2537619200ADC1A9 /* LoadingView.swift */; };
+		FE62AAD02714DFB8003308B9 /* GroupDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62AACF2714DFB8003308B9 /* GroupDetailsView.swift */; };
+		FE62AAD22714DFC8003308B9 /* GroupDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62AAD12714DFC8003308B9 /* GroupDetailsViewModel.swift */; };
+		FE62AAD42714E063003308B9 /* GroupInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62AAD32714E063003308B9 /* GroupInfoView.swift */; };
+		FE62AAD62714E082003308B9 /* GroupInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62AAD52714E082003308B9 /* GroupInfoViewModel.swift */; };
 		FE6CE08C24E7D9070000C17F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE6CE08B24E7D9070000C17F /* GoogleService-Info.plist */; };
 		FE800648270CDB95005AECE5 /* GroupFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE800647270CDB95005AECE5 /* GroupFormView.swift */; };
 		FE80064A270D06B2005AECE5 /* GroupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE800649270D06B2005AECE5 /* GroupFormViewModel.swift */; };
@@ -64,6 +68,10 @@
 		FE1F53D527032B5C00893621 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		FE42339A2539CAD700C3AE0E /* GroupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsView.swift; sourceTree = "<group>"; };
 		FE62791D2537619200ADC1A9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		FE62AACF2714DFB8003308B9 /* GroupDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsView.swift; sourceTree = "<group>"; };
+		FE62AAD12714DFC8003308B9 /* GroupDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewModel.swift; sourceTree = "<group>"; };
+		FE62AAD32714E063003308B9 /* GroupInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoView.swift; sourceTree = "<group>"; };
+		FE62AAD52714E082003308B9 /* GroupInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoViewModel.swift; sourceTree = "<group>"; };
 		FE6CE08B24E7D9070000C17F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FE800647270CDB95005AECE5 /* GroupFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormView.swift; sourceTree = "<group>"; };
 		FE800649270D06B2005AECE5 /* GroupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormViewModel.swift; sourceTree = "<group>"; };
@@ -175,6 +183,24 @@
 			path = GroupFormScreen;
 			sourceTree = "<group>";
 		};
+		FE62AACD2714DF41003308B9 /* GroupDetailsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FE62AACF2714DFB8003308B9 /* GroupDetailsView.swift */,
+				FE62AAD12714DFC8003308B9 /* GroupDetailsViewModel.swift */,
+			);
+			path = GroupDetailsScreen;
+			sourceTree = "<group>";
+		};
+		FE62AACE2714DF54003308B9 /* GroupInfoScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FE62AAD32714E063003308B9 /* GroupInfoView.swift */,
+				FE62AAD52714E082003308B9 /* GroupInfoViewModel.swift */,
+			);
+			path = GroupInfoScreen;
+			sourceTree = "<group>";
+		};
 		FE6CE08F24E808C60000C17F /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +215,8 @@
 		FE80064B270E2E3F005AECE5 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				FE62AACE2714DF54003308B9 /* GroupInfoScreen */,
+				FE62AACD2714DF41003308B9 /* GroupDetailsScreen */,
 				FE62AACC2714DF0B003308B9 /* GroupFormScreen */,
 				FE1F53D227032B4200893621 /* ProfileScreen */,
 				FE1F53CD27032A2D00893621 /* MainScreen */,
@@ -413,6 +441,7 @@
 				FE86A05924D1E69200A8A627 /* AppDelegate.swift in Sources */,
 				FE1F53CA2703281700893621 /* GroupView.swift in Sources */,
 				FE80064D270E2F27005AECE5 /* UserModel.swift in Sources */,
+				FE62AAD62714E082003308B9 /* GroupInfoViewModel.swift in Sources */,
 				FE86A09624D302F000A8A627 /* Colors.swift in Sources */,
 				FE86A05B24D1E69200A8A627 /* SceneDelegate.swift in Sources */,
 				FE80064F270E5790005AECE5 /* MultipleSelectionList.swift in Sources */,
@@ -426,6 +455,7 @@
 				FE86A09B24D35F4F00A8A627 /* DefaultTextField.swift in Sources */,
 				FE86A06D24D1EA7600A8A627 /* LoginView.swift in Sources */,
 				FECF5045270B8A780004E1C5 /* BaseNavigationModel.swift in Sources */,
+				FE62AAD02714DFB8003308B9 /* GroupDetailsView.swift in Sources */,
 				FE86A05D24D1E69200A8A627 /* ContentView.swift in Sources */,
 				FEBDFF00271388620070F8CB /* UserProfileModel.swift in Sources */,
 				FE80064A270D06B2005AECE5 /* GroupFormViewModel.swift in Sources */,
@@ -433,6 +463,7 @@
 				FEBDFEFE27137DAD0070F8CB /* UserSession.swift in Sources */,
 				FE1F53D127032A6F00893621 /* MainViewModel.swift in Sources */,
 				FE1F53D627032B5C00893621 /* ProfileViewModel.swift in Sources */,
+				FE62AAD22714DFC8003308B9 /* GroupDetailsViewModel.swift in Sources */,
 				FE86A09924D320A300A8A627 /* DefaultButton.swift in Sources */,
 				FE1F53BF26FFE10D00893621 /* BaseListModel.swift in Sources */,
 				FECF5048270B8B200004E1C5 /* PushContainerView.swift in Sources */,
@@ -441,6 +472,7 @@
 				FE1F53CC2703287900893621 /* GroupViewModel.swift in Sources */,
 				FE1F53D427032B5000893621 /* ProfileView.swift in Sources */,
 				FECDE39424DB737900FAFA41 /* LoginViewModel.swift in Sources */,
+				FE62AAD42714E063003308B9 /* GroupInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

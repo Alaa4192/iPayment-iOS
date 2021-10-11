@@ -13,16 +13,19 @@ struct GroupView: BaseView {
 
     var viewModel = GroupViewModel()
 
+    var groupDetailsView = GroupDetailsView()
+    var groupInfoView = GroupInfoView()
+
     var body: some View {
         NavigationView {
             TabView {
-                Text(group.name)
+                groupDetailsView
                     .tabItem {
                         Image(systemName: "person.3.fill")
                         Text("Group")
                     }
 
-                Text("\(group.name) info")
+                groupInfoView
                     .tabItem {
                         Image(systemName: "chart.bar.fill")
                         Text("Info")
