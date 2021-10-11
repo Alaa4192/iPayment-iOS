@@ -108,7 +108,14 @@ struct GroupItemView: View {
     var body: some View {
         VStack {
             HStack {
-                Text(group.name)
+                VStack(alignment: .leading) {
+                    Text(group.name)
+
+                    Text(group.data.type)
+                        .font(.caption)
+                        .padding(.top, 2)
+                        .foregroundColor(.gray)
+                }
                 Spacer()
 
                 VStack(alignment: .trailing) {
@@ -129,7 +136,7 @@ struct GroupItemView: View {
                         }
                     }
 
-                    Text(getDate(group.createdDate ?? 0))
+                    Text(getDate(group.createdDate))
                         .font(.caption)
                         .padding(.top, 2)
                         .foregroundColor(.gray)

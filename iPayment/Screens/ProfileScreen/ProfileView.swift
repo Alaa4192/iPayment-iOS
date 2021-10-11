@@ -15,15 +15,42 @@ struct ProfileView: BaseView {
     @ObservedObject var viewModel = ProfileViewModel()
 
     var body: some View {
-        VStack(alignment: .leading) {
-            if self.$viewModel.userProfile.wrappedValue != nil {
-                HStack {
-                    Text(self.viewModel.userProfile?.firstName.wrappedValue ?? "")
-                    Text(self.viewModel.userProfile?.lastName.wrappedValue ?? "")
-                }
+        new
+    }
 
-                Text("Groups: \(self.viewModel.userProfile?.groupsCount.wrappedValue ?? 0)")
-                    .padding(.top, 8)
+    private var new: some View {
+        VStack {
+            if self.$viewModel.userProfile.wrappedValue != nil {
+                Group {
+                    VStack {
+                        HStack(alignment: .center) {
+                            VStack(alignment: .leading) {
+                                Text("Welcome back,")
+                                    .font(.headline)
+                                Text(self.viewModel.userProfile?.firstName.wrappedValue ?? "")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .padding(.top, 1)
+                            }
+                            Spacer()
+
+                            ProfileIconView(
+                                firstName: self.viewModel.userProfile?.firstName.wrappedValue,
+                                lastName: self.viewModel.userProfile?.lastName.wrappedValue
+                            )
+                        }
+
+                        HStack {
+                            SubItemView(key: "Groups", value: "\(self.viewModel.userProfile?.groupsCount.wrappedValue ?? 0)")
+                        }
+                        .padding(.top, 32)
+
+                        Divider()
+                            .padding(.top, 4)
+                    }
+                }
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .topLeading)
             }
 
             Spacer()
@@ -40,16 +67,73 @@ struct ProfileView: BaseView {
             }
             .frame(maxWidth: .infinity, alignment: .center)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .padding()
         .onAppear {
             navigationModel.clearNavigationsBarItems()
         }
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView()
+struct SubItemView: View {
+    let key: String
+    let value: String
+
+    var body: some View {
+        VStack {
+            Text(value)
+                .fontWeight(.medium)
+            Text(key)
+                .font(.caption)
+                // .padding(.top)
+        }
     }
 }
+
+struct ProfileIconView: View {
+    let firstName: String?
+    let lastName: String?
+
+    var body: some View {
+        ZStack {
+            Circle()
+                .foregroundColor(Colors.darkBlue)
+                .frame(width: 60, height: 60, alignment: .center)
+
+            Circle()
+                .foregroundColor(Colors.white)
+                .frame(width: 52, height: 52, alignment: .center)
+
+            Text(getInitials())
+                .foregroundColor(Colors.darkBlue)
+                .font(.title)
+                .fontWeight(.bold)
+        }
+    }
+
+    private func getInitials() -> String {
+        let firstLetter = self.firstName?.first?.uppercased() ?? ""
+        let secondLetter = self.lastName?.first?.uppercased() ?? ""
+
+        return "\(firstLetter)\(secondLetter)"
+    }
+}
+
+struct SubItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        SubItemView(key: "Groups", value: "80")
+            .previewLayout(.sizeThatFits)
+    }
+}
+
+struct ProfileIconView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileIconView(firstName: "Alaa", lastName: "Khoury")
+            .previewLayout(.sizeThatFits)
+    }
+}
+
+
+//struct ProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileView()
+//    }
+//}
