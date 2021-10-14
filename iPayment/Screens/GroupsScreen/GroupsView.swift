@@ -119,26 +119,27 @@ struct GroupItemView: View {
                 Spacer()
 
                 VStack(alignment: .trailing) {
+                    Image(systemName: "star.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 14, height: 14)
+                        .opacity(group.isFavorite ? 1 : 0)
+
                     HStack {
-                        Group {
-                            Image(systemName: "person.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 12, height: 12)
+                        Text("(\(group.getUsersCount()))")
+                            .font(.caption)
 
-                            Text("(\(group.getUsersCount()))")
-                                .font(.caption)
-                        }
-                        .opacity(group.getUsersCount() > 1 ? 1 : 0)
-
-                        if group.isFavorite {
-                            Image(systemName: "star.fill")
-                        }
+                        Image(systemName: "person.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 14, height: 14)
                     }
+                    .padding(.top, 1)
+                    .opacity(group.getUsersCount() > 1 ? 1 : 0)
 
                     Text(getDate(group.createdDate))
                         .font(.caption)
-                        .padding(.top, 2)
+                        .padding(.top, 1)
                         .foregroundColor(.gray)
                 }
             }
@@ -167,7 +168,7 @@ struct GroupItemView: View {
 struct GroupItemView_Previews: PreviewProvider {
     static var previews: some View {
 
-        GroupItemView(group: GroupModel.create(name: "Test 1", isFavorite: false))
+        GroupItemView(group: GroupModel.create(name: "Test 1", isFavorite: true))
             .previewLayout(.sizeThatFits)
     }
 }

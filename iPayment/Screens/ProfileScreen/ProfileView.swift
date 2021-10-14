@@ -82,11 +82,11 @@ struct ProfileIconView: View {
         ZStack {
             Circle()
                 .foregroundColor(Colors.darkBlue)
-                .frame(width: 60, height: 60, alignment: .center)
+                .frame(width: 70, height: 70, alignment: .center)
 
             Circle()
                 .foregroundColor(Colors.white)
-                .frame(width: 52, height: 52, alignment: .center)
+                .frame(width: 64, height: 64, alignment: .center)
 
             Text(getInitials())
                 .foregroundColor(Colors.darkBlue)

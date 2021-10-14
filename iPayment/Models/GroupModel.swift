@@ -41,7 +41,7 @@ struct GroupModel: Codable, Hashable {
             isFavorite: isFavorite,
             isDeleted: false,
             createdDate: 0,
-            usersId: [],
+            usersId: ["ID1", "ID2", "ID3"],
             adminsId: []
         )
     }
