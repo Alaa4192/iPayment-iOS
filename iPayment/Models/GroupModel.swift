@@ -51,6 +51,24 @@ struct GroupModel: Codable, Hashable {
     }
 }
 
+struct GroupInfoModel: Codable, Hashable {
+    var id: String
+    var name: String
+    var data: GroupData
+    var isFavorite: Bool
+    var isDeleted: Bool
+    var createdDate: Int64
+    var permissions: Permissions?
+    var groupUsers: Array<GroupUser>?
+}
+
+struct GroupUser: Codable, Hashable {
+    var uid: String
+    var firstName: String
+    var lastName: String
+    var isYou: Bool
+}
+
 struct CreateGroup: Codable {
     let name: String
     let usersId: Array<String>
@@ -76,5 +94,9 @@ struct RemoveGroupRequest: Codable {
 }
 
 struct RemoveGroupResponse: Codable {
+    var id: String
+}
+
+struct GetGroupInfoRequest: Codable {
     var id: String
 }

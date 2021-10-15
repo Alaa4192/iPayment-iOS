@@ -32,7 +32,7 @@ class GroupFormViewModel: BaseViewModel, ObservableObject {
         let usersId = self.users.filter({ $0.isSelected }).map { $0.userModel.uid }
 
         GroupsRepository().createGroup(
-            group: CreateGroup(name: groupName, usersId: usersId, isShared: isSharedGroup, type: type)) {
+            group: CreateGroup(name: groupName, usersId: usersId, isShared: isSharedGroup, type: type)) { _ in
                 self.isLoading = false
 
                 onSuccess()

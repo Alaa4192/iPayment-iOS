@@ -22,7 +22,8 @@ struct MainView: BaseView {
     var body: some View {
         BaseNavigationView(model: navigationModel) {
             TabView {
-                groupsView.environmentObject(self.navigationModel)
+                groupsView
+                    .environmentObject(self.navigationModel)
                     .onAppear {
                         navigationModel.setTitle(title: "Groups")
                     }

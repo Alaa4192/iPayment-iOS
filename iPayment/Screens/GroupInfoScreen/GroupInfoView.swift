@@ -9,16 +9,53 @@
 import SwiftUI
 
 struct GroupInfoView: BaseView {
+    var group: GroupModel
 
-    var viewModel = GroupInfoViewModel()
+    @ObservedObject var viewModel = GroupInfoViewModel()
 
     var body: some View {
-        Text("GroupInfoView")
+        // LoadingView(isShowing: self.$viewModel.isLoading, hideNavigationBar: true) {
+            VStack(alignment: .leading) {
+                Text("Users")
+                    .font(.title)
+
+                VStack(alignment: .leading) {
+                    ForEach(self.viewModel.groupInfo?.groupUsers ?? Array(), id: \.self) { user in
+                        UserGroupView(user: user)
+                    }
+
+                }
+
+                Spacer()
+            }
+            .padding()
+        // }
+        .onAppear {
+            viewModel.loadGroupInfo(id: group.id)
+        }
+    }
+}
+
+struct UserGroupView: View {
+    let user: GroupUser
+
+    var body: some View {
+        HStack {
+            if user.isYou {
+                Text("You")
+            } else {
+                Text(user.firstName)
+                Text(user.lastName)
+            }
+
+            Spacer()
+        }
+        .frame(height: 40)
     }
 }
 
 struct GroupInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        GroupInfoView()
+        GroupInfoView(group: GroupModel.create(name: "Test Group", isFavorite: true))
     }
 }

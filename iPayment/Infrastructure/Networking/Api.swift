@@ -14,11 +14,18 @@ class Api {
     fileprivate let host: String = "https://vast-badlands-01149.herokuapp.com"
 
 
-    fileprivate func doPostRequest<T: Decodable, E: Encodable>(endpoint: String, encodedJson: E, type: T.Type, result: @escaping () -> Void) {
+    fileprivate func doPostRequest<T: Decodable, E: Encodable>(endpoint: String, encodedJson: E, type: T.Type, result: @escaping (T) -> Void) {
         AF.request(endpoint, method: .post, parameters: encodedJson, encoder: JSONParameterEncoder.default, headers: getHeaders())
-            .responseString { res in
-                // print(res)
-                result()
+            .validate()
+//            .responseString { res in
+//                print(res)
+//            }
+            .responseDecodable(of: type.self) { response in
+                guard let res = response.value else { return }
+
+                DispatchQueue.main.async {
+                    result(res)
+                }
             }
     }
 
@@ -50,30 +57,30 @@ class GroupsRepository: Api {
     private lazy var v1_createGroup = "\(host)/v1/createGroup"
     private lazy var v1_setFavorite = "\(host)/v1/setFavorite"
     private lazy var v1_removeGroup = "\(host)/v1/removeGroup"
+    private lazy var v1_getGroupInfo = "\(host)/v1/getGroupInfo"
 
     func getGroups(result: @escaping (BaseListModel<GroupModel>) -> Void) {
         doGetRequest(endpoint: v1_getGroups, type: BaseListModel<GroupModel>.self, result: result)
     }
 
-    func createGroup(group: CreateGroup, result: @escaping () -> Void) {
+    func createGroup(group: CreateGroup, result: @escaping (CreateGroupResponse) -> Void) {
         doPostRequest(
             endpoint: v1_createGroup,
             encodedJson: group,
-            type: CreateGroupResponse.self) {
-                result()
-        }
+            type: CreateGroupResponse.self,
+            result: result)
     }
 
-    func setGroupFavorite(request: SetGroupFavoriteRequest, result: @escaping () -> Void) {
-        doPostRequest(endpoint: v1_setFavorite, encodedJson: request, type: SetGroupFavoriteResponse.self) {
-            result()
-        }
+    func setGroupFavorite(request: SetGroupFavoriteRequest, result: @escaping (SetGroupFavoriteResponse) -> Void) {
+        doPostRequest(endpoint: v1_setFavorite, encodedJson: request, type: SetGroupFavoriteResponse.self, result: result)
     }
 
-    func removeGroup(request: RemoveGroupRequest, result: @escaping () -> Void) {
-        doPostRequest(endpoint: v1_removeGroup, encodedJson: request, type: RemoveGroupResponse.self) {
-            result()
-        }
+    func removeGroup(request: RemoveGroupRequest, result: @escaping (RemoveGroupResponse) -> Void) {
+        doPostRequest(endpoint: v1_removeGroup, encodedJson: request, type: RemoveGroupResponse.self, result: result)
+    }
+
+    func getGroupInfo(request: GetGroupInfoRequest, result: @escaping (GroupInfoModel) -> Void) {
+        doPostRequest(endpoint: v1_getGroupInfo, encodedJson: request, type: GroupInfoModel.self, result: result)
     }
 }
 

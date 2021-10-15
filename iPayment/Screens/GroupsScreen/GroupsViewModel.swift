@@ -30,7 +30,7 @@ class GroupsViewModel: BaseViewModel, ObservableObject {
         self.isLoading = true
 
         GroupsRepository().setGroupFavorite(
-            request: SetGroupFavoriteRequest(id: id, isFavorite: isFavorite)) {
+            request: SetGroupFavoriteRequest(id: id, isFavorite: isFavorite)) { _ in
                 self.loadGroups()
         }
     }
@@ -38,7 +38,7 @@ class GroupsViewModel: BaseViewModel, ObservableObject {
     func removeGroup(_ id: String) {
         self.isLoading = true
 
-        GroupsRepository().removeGroup(request: RemoveGroupRequest(id: id)) {
+        GroupsRepository().removeGroup(request: RemoveGroupRequest(id: id)) { _ in
             self.loadGroups()
         }
     }
