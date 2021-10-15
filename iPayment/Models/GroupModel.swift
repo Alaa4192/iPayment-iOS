@@ -67,6 +67,7 @@ struct GroupUser: Codable, Hashable {
     var firstName: String
     var lastName: String
     var isYou: Bool
+    var isAdmin: Bool?
 }
 
 struct CreateGroup: Codable {

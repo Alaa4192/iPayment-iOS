@@ -62,6 +62,10 @@ struct UserView: View {
                 Text(user.firstName)
                 Text(user.lastName)
             }
+            
+            if user.isAdmin ?? false {
+                Image(systemName: "person.fill")
+            }
 
             Spacer()
         }
