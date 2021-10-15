@@ -19,8 +19,20 @@ struct GroupView: BaseView {
     var body: some View {
         FullScreenView {
             VStack {
-                GroupIconView(name: group.name)
-                Text(group.name)
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(group.name)
+                            .font(.custom("SomeTitle", size: 20))
+                            .fontWeight(.bold)
+
+                        Text(group.data.type)
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+
+                    Spacer()
+                    GroupIconView(name: group.name)
+                }
 
                 HStack {
                     if group.usersId?.count ?? 0 > 1 {
@@ -39,7 +51,13 @@ struct GroupView: BaseView {
                 .padding(.top)
 
                 Divider()
-                    .padding()
+                    .padding(8)
+
+                Button(action: {} ) {
+                    Text("Add")
+                }
+                .modifier(InverseButton(isWide: true))
+
                 Spacer()
 
             }
@@ -91,6 +109,7 @@ struct ItemView: View {
                 Image(systemName: imageSystemName)
                 Text(text)
                     .padding(.top, 2)
+                    .font(.caption)
             }
         }
         .foregroundColor(Colors.black)
