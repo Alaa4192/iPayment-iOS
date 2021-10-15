@@ -14,7 +14,7 @@ struct GroupInfoView: BaseView {
     @ObservedObject var viewModel = GroupInfoViewModel()
 
     var body: some View {
-        // LoadingView(isShowing: self.$viewModel.isLoading, hideNavigationBar: true) {
+         LoadingView(isShowing: self.$viewModel.isLoading) {
             VStack(alignment: .leading) {
                 Text("Users")
                     .font(.title)
@@ -29,7 +29,7 @@ struct GroupInfoView: BaseView {
                 Spacer()
             }
             .padding()
-        // }
+         }
         .onAppear {
             viewModel.loadGroupInfo(id: group.id)
         }

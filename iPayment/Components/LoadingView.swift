@@ -9,18 +9,38 @@
 import SwiftUI
 
 struct LoadingView<Content>: View where Content: View {
-    
+    @Environment(\.presentationMode) var presentation
+
     @Binding var isShowing: Bool
     var content: () -> Content
     
     var body: some View {
         GeometryReader { geomtry in
             ZStack(alignment: .center) {
-                self.content()
-                    .frame(maxWidth: .infinity)
-                    .disabled(self.isShowing)
-                    .blur(radius: self.isShowing ? 5 : 0)
-                
+                VStack {
+//                    if hideNavigationBar {
+//                        HStack {
+//                            Button(action: { presentation.wrappedValue.dismiss() }) {
+//                                HStack {
+//                                  Image(systemName: "chevron.left")
+//                                    .foregroundColor(.blue)
+//                                    .imageScale(.large)
+//                                  Text("Back")
+//                                    .foregroundColor(.blue)
+//                                }
+//                            }
+//
+//                            Spacer()
+//                        }
+//                        .padding(12)
+//                    }
+                    
+                    self.content()
+                        .frame(maxWidth: .infinity)
+                        .disabled(self.isShowing)
+                        .blur(radius: self.isShowing ? 5 : 0)
+                }
+
                 VStack(spacing: 16) {
                     ActivityIndicator(isAnimating: .constant(true), style: .large)
                     Text("Loading")

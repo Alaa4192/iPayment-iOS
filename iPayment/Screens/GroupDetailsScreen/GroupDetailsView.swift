@@ -14,7 +14,11 @@ struct GroupDetailsView: BaseView {
     var viewModel = GroupDetailsViewModel()
 
     var body: some View {
-        Text("GroupDetailsView")
+        LoadingView(isShowing: .constant(false)) {
+            VStack {
+                Text("GroupDetailsView")
+            }
+        }
     }
 }
 
