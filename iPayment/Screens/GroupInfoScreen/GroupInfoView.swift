@@ -16,41 +16,16 @@ struct GroupInfoView: BaseView {
     var body: some View {
          LoadingView(isShowing: self.$viewModel.isLoading) {
             VStack(alignment: .leading) {
-                Text("Users")
-                    .font(.title)
-
-                VStack(alignment: .leading) {
-                    ForEach(self.viewModel.groupInfo?.groupUsers ?? Array(), id: \.self) { user in
-                        UserGroupView(user: user)
-                    }
-
-                }
 
                 Spacer()
             }
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
             .padding()
          }
         .onAppear {
             viewModel.loadGroupInfo(id: group.id)
         }
-    }
-}
-
-struct UserGroupView: View {
-    let user: GroupUser
-
-    var body: some View {
-        HStack {
-            if user.isYou {
-                Text("You")
-            } else {
-                Text(user.firstName)
-                Text(user.lastName)
-            }
-
-            Spacer()
-        }
-        .frame(height: 40)
+        .navigationBarHidden(true)
     }
 }
 

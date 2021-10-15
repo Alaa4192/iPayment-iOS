@@ -14,11 +14,16 @@ struct GroupDetailsView: BaseView {
     var viewModel = GroupDetailsViewModel()
 
     var body: some View {
-        LoadingView(isShowing: .constant(false)) {
-            VStack {
-                Text("GroupDetailsView")
-            }
-        }
+//        LoadingView(isShowing: .constant(false)) {
+//            VStack {
+//                Text("GroupDetailsView")
+//            }
+//            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+//            .background(Color.blue)
+//        }
+//        .navigationBarHidden(true)
+
+        Text("GroupDetailsView")
     }
 }
 
