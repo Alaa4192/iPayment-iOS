@@ -26,7 +26,6 @@ struct GroupUsersView: BaseView {
         .onAppear {
             viewModel.loadGroupInfo(id: group.id)
         }
-        .navigationBarHidden(true)
     }
 }
 

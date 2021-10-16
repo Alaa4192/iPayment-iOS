@@ -18,6 +18,7 @@ class Api {
         AF.request(endpoint, method: .post, parameters: encodedJson, encoder: JSONParameterEncoder.default, headers: getHeaders())
             .validate()
 //            .responseString { res in
+//                print(endpoint)
 //                print(res)
 //            }
             .responseDecodable(of: type.self) { response in
@@ -33,6 +34,7 @@ class Api {
         AF.request(endpoint, method: .get, headers: getHeaders())
             .validate()
 //            .responseString { result in
+//                print(endpoint)
 //                print(result)
 //            }
             .responseDecodable(of: type.self) { (response) in

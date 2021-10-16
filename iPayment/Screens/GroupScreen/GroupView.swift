@@ -15,6 +15,7 @@ struct GroupView: BaseView {
 
     @State var usersIsPresented: Bool = false
     @State var infoIsPresented: Bool = false
+    @State var createFormIsPresented: Bool = false
 
     var body: some View {
         FullScreenView {
@@ -53,7 +54,9 @@ struct GroupView: BaseView {
                 Divider()
                     .padding(8)
 
-                Button(action: {} ) {
+                Button(action: {
+                    self.createFormIsPresented = true
+                }) {
                     Text("Add")
                 }
                 .modifier(InverseButton(isWide: true))
@@ -67,6 +70,9 @@ struct GroupView: BaseView {
         }
         .sheet(isPresented: self.$infoIsPresented, onDismiss: { self.infoIsPresented = false }) {
             GroupInfoView(group: self.group)
+        }
+        .sheet(isPresented: self.$createFormIsPresented, onDismiss: { self.createFormIsPresented = false }) {
+            CreatePaymentFormView(group: self.group)
         }
     }
 }

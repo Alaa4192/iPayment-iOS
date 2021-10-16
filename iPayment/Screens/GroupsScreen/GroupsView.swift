@@ -13,6 +13,8 @@ struct GroupsView: BaseView {
 
     @State var showGroupForm: Bool = false
     @State var showWarningDialog: Bool = false
+    @State var createFormIsPresented: Bool = false
+    @State var usersIsPresented: Bool = false
 
     @ObservedObject var viewModel = GroupsViewModel()
 
@@ -58,29 +60,7 @@ struct GroupsView: BaseView {
                     self.navigationModel.pushMain(view: GroupView(group: group))
                 }
                 .contextMenu {
-                    Button {
-                        self.viewModel.setFavorite(group.id, !group.isFavorite)
-                    } label: {
-                        HStack {
-                            Image(systemName: "star.fill")
-                            if !group.isFavorite {
-                                Text("Add to favorites")
-                            } else {
-                                Text("Remove from favorites")
-                            }
-                        }
-                    }
-
-                    if group.permissions?.canDelete ?? false {
-                        Button {
-                            self.showWarningDialog = true
-                        } label: {
-                            HStack {
-                                Image(systemName: "trash.slash.fill")
-                                Text("Remove")
-                            }
-                        }
-                    }
+                    contextMenu(group)
                 }
                 .alert(isPresented: self.$showWarningDialog, content: {
                     Alert(
@@ -91,6 +71,12 @@ struct GroupsView: BaseView {
                         },
                         secondaryButton: Alert.Button.cancel())
                 })
+                .sheet(isPresented: self.$createFormIsPresented, onDismiss: { self.createFormIsPresented = false }) {
+                    CreatePaymentFormView(group: group)
+                }
+                .sheet(isPresented: self.$usersIsPresented, onDismiss: { self.usersIsPresented = false }) {
+                    GroupUsersView(group: group)
+                }
         }
     }
 
@@ -98,6 +84,60 @@ struct GroupsView: BaseView {
         Group {
             Spacer(minLength: 50)
             Text("Create your first group")
+        }
+    }
+
+    private func contextMenu(_ group: GroupModel) -> some View {
+        return Group {
+            Button(action: {
+                self.createFormIsPresented = true
+            }) {
+                HStack {
+                    Image(systemName: "dollarsign.circle.fill")
+
+                    Text("Create payment")
+                }
+            }
+
+            Divider()
+
+            if group.usersId?.count ?? 0 > 1 && false {
+                Button(action: {
+                    self.usersIsPresented = true
+                }) {
+                    HStack {
+                        Image(systemName: "person.3.sequence.fill")
+
+                        Text("Users")
+                    }
+                }
+
+                Divider()
+            }
+
+            Button(action: {
+                self.viewModel.setFavorite(group.id, !group.isFavorite)
+            }) {
+                HStack {
+                    Image(systemName: "star.fill")
+                    if !group.isFavorite {
+                        Text("Add to favorites")
+                    } else {
+                        Text("Remove from favorites")
+                    }
+                }
+            }
+
+            if group.permissions?.canDelete ?? false {
+                Button(action: {
+                    self.showWarningDialog = true
+                }) {
+                    HStack {
+                        Image(systemName: "trash.slash.fill")
+                        Text("Remove")
+                    }
+                }
+            }
         }
     }
 }
