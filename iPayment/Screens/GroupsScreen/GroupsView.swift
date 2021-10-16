@@ -87,16 +87,37 @@ struct GroupsView: BaseView {
         }
     }
 
+    private func addExpenseContextMenu(_ group: GroupModel) -> some View {
+        return Group {
+            Button(action: { }) {
+                Image(systemName: "creditcard.fill")
+                Text("Expense")
+            }
+
+            if "Car" == group.data.type {
+                Button(action: { }) {
+                    Image(systemName: "wand.and.rays")
+                    Text("Service")
+                }
+
+                Button(action: { }) {
+                    Image(systemName: "gauge")
+                    Text("Refueling")
+                }
+            }
+        }
+    }
+
     private func contextMenu(_ group: GroupModel) -> some View {
         return Group {
-            Button(action: {
-                self.createFormIsPresented = true
-            }) {
+            Button(action: {}) {
                 HStack {
                     Image(systemName: "dollarsign.circle.fill")
-
-                    Text("Create payment")
+                    Text("Add expense")
                 }
+            }
+            .contextMenu {
+                addExpenseContextMenu(group)
             }
 
             Divider()
@@ -107,7 +128,6 @@ struct GroupsView: BaseView {
                 }) {
                     HStack {
                         Image(systemName: "person.3.sequence.fill")
-
                         Text("Users")
                     }
                 }

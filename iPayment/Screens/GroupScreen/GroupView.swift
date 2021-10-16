@@ -57,7 +57,7 @@ struct GroupView: BaseView {
                 Button(action: {
                     self.createFormIsPresented = true
                 }) {
-                    Text("Add")
+                    Text("Add Expense")
                 }
                 .modifier(InverseButton(isWide: true))
 
@@ -71,9 +71,26 @@ struct GroupView: BaseView {
         .sheet(isPresented: self.$infoIsPresented, onDismiss: { self.infoIsPresented = false }) {
             GroupInfoView(group: self.group)
         }
-        .sheet(isPresented: self.$createFormIsPresented, onDismiss: { self.createFormIsPresented = false }) {
-            CreatePaymentFormView(group: self.group)
+        .actionSheet(isPresented: self.$createFormIsPresented, content: {
+            ActionSheet(
+                title: Text("Add Expense"),
+                buttons: getAddExpenseButtons(group)
+            )
+        })
+    }
+
+    private func getAddExpenseButtons(_ group: GroupModel) -> [ActionSheet.Button] {
+        var buttons = [
+            ActionSheet.Button.default(Text("Expense"))
+        ]
+
+        if "Car" == group.data.type {
+            buttons.append(ActionSheet.Button.default(Text("Service")))
+            buttons.append(ActionSheet.Button.default(Text("Refueling")))
         }
+
+        buttons.append(ActionSheet.Button.cancel())
+        return buttons
     }
 }
 
