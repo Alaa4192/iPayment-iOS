@@ -100,7 +100,7 @@ struct GroupsView: BaseView {
                     Text("Service")
                 }
 
-                Button(action: { }) {
+                Button(action: { self.createFormIsPresented = true }) {
                     Image(systemName: "gauge")
                     Text("Refueling")
                 }

@@ -8,15 +8,55 @@
 
 import SwiftUI
 
-struct CreatePaymentFormView: View {
+struct CreatePaymentFormView: BaseView {
     var group: GroupModel
-    
+
+    @State private var price = ""
+    @State private var liters = ""
+    @State private var priceLiter = ""
+    @State private var odometer = ""
+    @State private var note = ""
+
+    var viewModel = CreatePaymentFormViewModel()
+
     var body: some View {
-        FullScreenFormView {
-            VStack {
-                Text("CreatePaymentFormView")
+        FullScreenFormView(actionButton: actionButton) {
+            Section(header: Text("Refueling")) {
+                TextField("Price", text: $price)
+                    .keyboardType(.decimalPad)
+
+                HStack {
+                    TextField("Liters", text: $liters)
+                        .keyboardType(.decimalPad)
+
+                    Divider()
+
+                    TextField("Price/Liter", text: $priceLiter)
+                        .keyboardType(.decimalPad)
+                }
+
+                TextField("Odometer", text: $odometer)
+                    .keyboardType(.decimalPad)
+            }
+
+            Section(header: Text("Additional Info")) {
+                TextField("Note", text: $note)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(5)
+
+                HStack {
+                    Image(systemName: "plus.circle")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(.gray)
+                }
             }
         }
+    }
+
+    private var actionButton: Button<Text> {
+        return Button(action: { }, label: { Text("Add") })
     }
 }
 

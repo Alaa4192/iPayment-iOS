@@ -11,28 +11,50 @@ import SwiftUI
 struct FullScreenFormView<Content>: View where Content: View {
     @Environment(\.presentationMode) var presentation
 
-    var content: () -> Content
+    var actionButton: Button<Text>? = nil
+    @ViewBuilder var content: () -> Content
 
     var body: some View {
         VStack {
-            HStack {
+            HStack(alignment: .center) {
                 Button(action: { presentation.wrappedValue.dismiss() }) {
-                    HStack {
-//                      Image(systemName: "xmark.circle.fill")
-//                        .foregroundColor(.blue)
-//                        .imageScale(.large)
-                      Text("Close")
+                    Text("Close")
                         .foregroundColor(.blue)
-                    }
                 }
-                Spacer()
-            }
-            .padding(.bottom, 8)
 
-            content()
+                Spacer()
+
+                if actionButton != nil {
+                    actionButton
+                        .foregroundColor(.blue)
+                }
+            }
+            .padding(.top)
+            .padding(.horizontal)
+
+            Form {
+                content()
+            }
         }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-        .padding()
+
+//        VStack {
+//            HStack {
+//                Button(action: { presentation.wrappedValue.dismiss() }) {
+//                    HStack {
+////                      Image(systemName: "xmark.circle.fill")
+////                        .foregroundColor(.blue)
+////                        .imageScale(.large)
+//                      Text("Close")
+//                        .foregroundColor(.blue)
+//                    }
+//                }
+//                Spacer()
+//            }
+//            .padding(.bottom, 8)
+//
+//            content()
+//        }
+//        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
     }
 }
 

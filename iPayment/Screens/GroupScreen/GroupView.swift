@@ -16,6 +16,7 @@ struct GroupView: BaseView {
     @State var usersIsPresented: Bool = false
     @State var infoIsPresented: Bool = false
     @State var createFormIsPresented: Bool = false
+    @State var addExpenseMenuIsPresented: Bool = false
 
     var body: some View {
         FullScreenView {
@@ -55,7 +56,7 @@ struct GroupView: BaseView {
                     .padding(8)
 
                 Button(action: {
-                    self.createFormIsPresented = true
+                    self.addExpenseMenuIsPresented = true
                 }) {
                     Text("Add Expense")
                 }
@@ -71,7 +72,10 @@ struct GroupView: BaseView {
         .sheet(isPresented: self.$infoIsPresented, onDismiss: { self.infoIsPresented = false }) {
             GroupInfoView(group: self.group)
         }
-        .actionSheet(isPresented: self.$createFormIsPresented, content: {
+        .sheet(isPresented: self.$createFormIsPresented, onDismiss: { self.createFormIsPresented = false }) {
+            CreatePaymentFormView(group: group)
+        }
+        .actionSheet(isPresented: self.$addExpenseMenuIsPresented, content: {
             ActionSheet(
                 title: Text("Add Expense"),
                 buttons: getAddExpenseButtons(group)
@@ -86,7 +90,9 @@ struct GroupView: BaseView {
 
         if "Car" == group.data.type {
             buttons.append(ActionSheet.Button.default(Text("Service")))
-            buttons.append(ActionSheet.Button.default(Text("Refueling")))
+            buttons.append(ActionSheet.Button.default(Text("Refueling")) {
+                self.createFormIsPresented = true
+            })
         }
 
         buttons.append(ActionSheet.Button.cancel())
