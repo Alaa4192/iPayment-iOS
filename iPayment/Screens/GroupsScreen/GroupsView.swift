@@ -72,7 +72,7 @@ struct GroupsView: BaseView {
                         secondaryButton: Alert.Button.cancel())
                 })
                 .sheet(isPresented: self.$createFormIsPresented, onDismiss: { self.createFormIsPresented = false }) {
-                    CreatePaymentFormView(group: group)
+                    CreatePaymentFormView(group: group, expenseType: self.viewModel.expenseType)
                 }
                 .sheet(isPresented: self.$usersIsPresented, onDismiss: { self.usersIsPresented = false }) {
                     GroupUsersView(group: group)
@@ -89,18 +89,27 @@ struct GroupsView: BaseView {
 
     private func addExpenseContextMenu(_ group: GroupModel) -> some View {
         return Group {
-            Button(action: { }) {
+            Button(action: {
+                self.viewModel.expenseType = .expense
+                self.createFormIsPresented = true
+            }) {
                 Image(systemName: "creditcard.fill")
                 Text("Expense")
             }
 
             if "Car" == group.data.type {
-                Button(action: { }) {
+                Button(action: {
+                    self.viewModel.expenseType = .service
+                    self.createFormIsPresented = true
+                }) {
                     Image(systemName: "wand.and.rays")
                     Text("Service")
                 }
 
-                Button(action: { self.createFormIsPresented = true }) {
+                Button(action: {
+                    self.viewModel.expenseType = .refueling
+                    self.createFormIsPresented = true
+                }) {
                     Image(systemName: "gauge")
                     Text("Refueling")
                 }

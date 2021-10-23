@@ -73,7 +73,7 @@ struct GroupView: BaseView {
             GroupInfoView(group: self.group)
         }
         .sheet(isPresented: self.$createFormIsPresented, onDismiss: { self.createFormIsPresented = false }) {
-            CreatePaymentFormView(group: group)
+            CreatePaymentFormView(group: group, expenseType: self.viewModel.expenseType)
         }
         .actionSheet(isPresented: self.$addExpenseMenuIsPresented, content: {
             ActionSheet(
@@ -85,12 +85,20 @@ struct GroupView: BaseView {
 
     private func getAddExpenseButtons(_ group: GroupModel) -> [ActionSheet.Button] {
         var buttons = [
-            ActionSheet.Button.default(Text("Expense"))
+            ActionSheet.Button.default(Text("Expense")) {
+                viewModel.expenseType = .expense
+                self.createFormIsPresented = true
+            }
         ]
 
         if "Car" == group.data.type {
-            buttons.append(ActionSheet.Button.default(Text("Service")))
+            buttons.append(ActionSheet.Button.default(Text("Service")) {
+                viewModel.expenseType = .service
+                self.createFormIsPresented = true
+            })
+
             buttons.append(ActionSheet.Button.default(Text("Refueling")) {
+                viewModel.expenseType = .refueling
                 self.createFormIsPresented = true
             })
         }

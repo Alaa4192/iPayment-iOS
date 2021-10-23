@@ -9,5 +9,7 @@
 import SwiftUI
 
 class GroupViewModel: BaseViewModel {
+
+    var expenseType: ExpenseType = .defaultType
     
 }

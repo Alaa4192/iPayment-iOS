@@ -12,6 +12,8 @@ class GroupsViewModel: BaseViewModel, ObservableObject {
     @Published var groups = Array<GroupModel>()
     @Published var isLoading: Bool = false
 
+    var expenseType: ExpenseType = .defaultType
+
     override init() {
         super.init()
 

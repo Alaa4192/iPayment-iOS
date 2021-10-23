@@ -10,19 +10,22 @@ import SwiftUI
 
 struct CreatePaymentFormView: BaseView {
     var group: GroupModel
+    var expenseType: ExpenseType = .defaultType
 
     @State private var price = ""
     @State private var liters = ""
     @State private var priceLiter = ""
     @State private var odometer = ""
     @State private var note = ""
+    @State private var service = ""
+    @State private var expense = ""
 
     var viewModel = CreatePaymentFormViewModel()
 
     var body: some View {
         FullScreenFormView(actionButton: actionButton) {
-            mainSection(type: group.data.type)
-            additionlInfoSection(type: group.data.type)
+            mainSection(type: expenseType)
+            additionlInfoSection(type: expenseType)
         }
     }
 
@@ -30,27 +33,47 @@ struct CreatePaymentFormView: BaseView {
         return Button(action: { }, label: { Text("Add") })
     }
 
-    private func mainSection(type: String) -> some View {
-        return Section(header: Text("Refueling")) {
+    private func mainSection(type: ExpenseType) -> some View {
+        return Section(header: Text(type.rawValue)) {
             TextField("Price", text: $price)
                 .keyboardType(.decimalPad)
 
-            HStack {
-                TextField("Liters", text: $liters)
+            switch type {
+            case ExpenseType.refueling:
+                HStack {
+                    TextField("Liters", text: $liters)
+                        .keyboardType(.decimalPad)
+
+                    Divider()
+
+                    TextField("Price/Liter", text: $priceLiter)
+                        .keyboardType(.decimalPad)
+                }
+
+                TextField("Odometer", text: $odometer)
                     .keyboardType(.decimalPad)
 
-                Divider()
-
-                TextField("Price/Liter", text: $priceLiter)
+            case ExpenseType.service:
+                TextField("Service", text: $service)
                     .keyboardType(.decimalPad)
+
+                TextField("Odometer", text: $odometer)
+                    .keyboardType(.decimalPad)
+
+            case ExpenseType.expense:
+                TextField("Expense", text: $expense)
+                    .keyboardType(.decimalPad)
+
+                TextField("Odometer", text: $odometer)
+                    .keyboardType(.decimalPad)
+
+            default:
+                Group {}
             }
-
-            TextField("Odometer", text: $odometer)
-                .keyboardType(.decimalPad)
         }
     }
 
-    private func additionlInfoSection(type: String) -> some View {
+    private func additionlInfoSection(type: ExpenseType) -> some View {
         return Section(header: Text("Additional Info")) {
                 TextField("Note", text: $note)
                     .multilineTextAlignment(.leading)
@@ -65,6 +88,13 @@ struct CreatePaymentFormView: BaseView {
             }
         }
     }
+}
+
+enum ExpenseType: String {
+    case defaultType = "Default"
+    case refueling = "Refueling"
+    case service = "Service"
+    case expense = "Expense"
 }
 
 struct CreatePaymentFormView_Previews: PreviewProvider {
