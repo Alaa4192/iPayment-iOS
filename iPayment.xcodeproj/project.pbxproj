@@ -20,6 +20,7 @@
 		FE1F53D127032A6F00893621 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53D027032A6F00893621 /* MainViewModel.swift */; };
 		FE1F53D427032B5000893621 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53D327032B5000893621 /* ProfileView.swift */; };
 		FE1F53D627032B5C00893621 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53D527032B5C00893621 /* ProfileViewModel.swift */; };
+		FE3A262427249B4900DC2B05 /* appstore.png in Resources */ = {isa = PBXBuildFile; fileRef = FE3A262327249B4900DC2B05 /* appstore.png */; };
 		FE42339B2539CAD700C3AE0E /* GroupsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE42339A2539CAD700C3AE0E /* GroupsView.swift */; };
 		FE62791E2537619200ADC1A9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62791D2537619200ADC1A9 /* LoadingView.swift */; };
 		FE62AAD02714DFB8003308B9 /* GroupDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE62AACF2714DFB8003308B9 /* GroupDetailsView.swift */; };
@@ -72,6 +73,7 @@
 		FE1F53D027032A6F00893621 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		FE1F53D327032B5000893621 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		FE1F53D527032B5C00893621 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		FE3A262327249B4900DC2B05 /* appstore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appstore.png; sourceTree = "<group>"; };
 		FE42339A2539CAD700C3AE0E /* GroupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsView.swift; sourceTree = "<group>"; };
 		FE62791D2537619200ADC1A9 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FE62AACF2714DFB8003308B9 /* GroupDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsView.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				FE86A05E24D1E69400A8A627 /* Assets.xcassets */,
 				FE86A06324D1E69400A8A627 /* LaunchScreen.storyboard */,
 				FE86A06624D1E69400A8A627 /* Info.plist */,
+				FE3A262327249B4900DC2B05 /* appstore.png */,
 				FE6CE08B24E7D9070000C17F /* GoogleService-Info.plist */,
 				FE86A06024D1E69400A8A627 /* Preview Content */,
 			);
@@ -415,6 +418,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE3A262427249B4900DC2B05 /* appstore.png in Resources */,
 				FE86A06524D1E69400A8A627 /* LaunchScreen.storyboard in Resources */,
 				FE6CE08C24E7D9070000C17F /* GoogleService-Info.plist in Resources */,
 				FE86A06224D1E69400A8A627 /* Preview Assets.xcassets in Resources */,
@@ -651,6 +655,7 @@
 			baseConfigurationReference = E7F8B37E47715FCE79C766FF /* Pods-iPayment.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iPayment/Preview Content\"";
 				DEVELOPMENT_TEAM = 2MT5XC3W26;
@@ -672,6 +677,7 @@
 			baseConfigurationReference = 83025FB95471A11ECDE986A1 /* Pods-iPayment.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iPayment/Preview Content\"";
 				DEVELOPMENT_TEAM = 2MT5XC3W26;
