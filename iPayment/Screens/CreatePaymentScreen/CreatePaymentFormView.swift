@@ -20,12 +20,15 @@ struct CreatePaymentFormView: BaseView {
     @State private var service = ""
     @State private var expense = ""
 
+    @State var attachmentsMenuIsPresented: Bool = false
+
     var viewModel = CreatePaymentFormViewModel()
 
     var body: some View {
         FullScreenFormView(actionButton: actionButton) {
             mainSection(type: expenseType)
             additionlInfoSection(type: expenseType)
+            attachmentsSection(type: expenseType)
         }
     }
 
@@ -78,15 +81,52 @@ struct CreatePaymentFormView: BaseView {
                 TextField("Note", text: $note)
                     .multilineTextAlignment(.leading)
                     .lineLimit(5)
-
-                HStack {
-                    Image(systemName: "plus.circle")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 40, height: 40)
-                        .foregroundColor(.gray)
-            }
         }
+    }
+
+    private func attachmentsSection(type: ExpenseType) -> some View {
+        return Section(content: {
+//                HStack {
+//
+//                }
+            }, header: {
+                HStack {
+                    Text("Attachments")
+                    Spacer()
+                    Button(action: {
+                        self.attachmentsMenuIsPresented = true
+                    }, label: {
+                        Image(systemName: "photo.fill.on.rectangle.fill")
+                            .foregroundColor(Colors.darkBlue)
+                        Text("Add")
+                    })
+                }
+            }, footer: {
+                HStack {
+                    Text("No attachments")
+                }
+            })
+            .actionSheet(isPresented: $attachmentsMenuIsPresented, content: {
+                ActionSheet(
+                    title: Text("Attachments"),
+                    buttons: getAttachmentsMenuButtons()
+                )
+            })
+    }
+
+    private func getAttachmentsMenuButtons() -> [ActionSheet.Button] {
+        var buttons = Array<ActionSheet.Button>()
+        buttons.append(ActionSheet.Button.default(Text("Choose a Photo")) {
+
+        })
+        
+        buttons.append(ActionSheet.Button.default(Text("Take a Photo")) {
+
+        })
+
+        buttons.append(ActionSheet.Button.cancel())
+
+        return buttons
     }
 }
 
