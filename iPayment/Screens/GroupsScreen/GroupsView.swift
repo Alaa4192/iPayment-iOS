@@ -94,7 +94,7 @@ struct GroupsView: BaseView {
                 self.createFormIsPresented = true
             }) {
                 Image(systemName: "creditcard.fill")
-                Text("Expense")
+                Text(ExpenseType.expense.rawValue)
             }
 
             if "Car" == group.data.type {
@@ -103,7 +103,7 @@ struct GroupsView: BaseView {
                     self.createFormIsPresented = true
                 }) {
                     Image(systemName: "wand.and.rays")
-                    Text("Service")
+                    Text(ExpenseType.service.rawValue)
                 }
 
                 Button(action: {
@@ -111,7 +111,7 @@ struct GroupsView: BaseView {
                     self.createFormIsPresented = true
                 }) {
                     Image(systemName: "gauge")
-                    Text("Refueling")
+                    Text(ExpenseType.refueling.rawValue)
                 }
             }
         }

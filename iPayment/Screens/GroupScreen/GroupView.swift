@@ -64,13 +64,10 @@ struct GroupView: BaseView {
 
                 Divider()
 
-                Button(action: {
-                    self.addExpenseMenuIsPresented = true
-                }) {
-                    Text("Add Expense")
+                AddExpenseView(group: group) { expenseType in
+                    viewModel.expenseType = expenseType
+                    self.createFormIsPresented = true
                 }
-                .modifier(InverseButton(isWide: true))
-
             }
             .onAppear {
                 self.viewModel.loadExpenses(group.id)
@@ -197,4 +194,41 @@ struct ExpenseItemView: View {
     }
 }
 
+struct AddExpenseView: View {
+    let group: GroupModel
+    let onClick: (ExpenseType) -> Void
+
+    var body: some View {
+
+//        Button(action: {
+//            self.addExpenseMenuIsPresented = true
+//        }) {
+//            Text("Add Expense")
+//        }
+//        .modifier(InverseButton(isWide: true))
+
+        VStack {
+            Text("Add")
+                .font(.caption)
+                .foregroundColor(Color.gray)
+                .padding(.bottom, 4)
+
+            HStack(alignment: .bottom, spacing: 48) {
+                ItemView(text: ExpenseType.expense.rawValue, imageSystemName: "creditcard") {
+                    onClick(.expense)
+                }
+
+                if "Car" == group.data.type {
+                    ItemView(text: ExpenseType.service.rawValue, imageSystemName: "wand.and.rays") {
+                        onClick(.service)
+                    }
+
+                    ItemView(text: ExpenseType.refueling.rawValue, imageSystemName: "gauge") {
+                        onClick(.refueling)
+                    }
+                }
+            }
+        }
+    }
+}
 
