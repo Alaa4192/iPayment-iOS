@@ -11,7 +11,7 @@ import SwiftUI
 struct GroupView: BaseView {
     var group: GroupModel
 
-    var viewModel = GroupViewModel()
+    @ObservedObject var viewModel = GroupViewModel()
 
     @State var usersIsPresented: Bool = false
     @State var infoIsPresented: Bool = false
@@ -53,7 +53,16 @@ struct GroupView: BaseView {
                 .padding(.top)
 
                 Divider()
-                    .padding(8)
+
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        ForEach(self.viewModel.expenses, id: \.id) { expense in
+                            ExpenseItemView(expense: expense)
+                        }
+                    }
+                }
+
+                Divider()
 
                 Button(action: {
                     self.addExpenseMenuIsPresented = true
@@ -62,8 +71,9 @@ struct GroupView: BaseView {
                 }
                 .modifier(InverseButton(isWide: true))
 
-                Spacer()
-
+            }
+            .onAppear {
+                self.viewModel.loadExpenses(group.id)
             }
         }
         .sheet(isPresented: self.$usersIsPresented, onDismiss: { self.usersIsPresented = false }) {
@@ -152,3 +162,39 @@ struct ItemView: View {
         .foregroundColor(Colors.black)
     }
 }
+
+struct ExpenseItemView: View {
+    let expense: ExpenseModel
+
+    var body: some View {
+        VStack {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(expense.title ?? "Title")
+
+                    Text("₪ \(expense.price.roundToTwoDecimals())")
+                        .font(.caption)
+                        .padding(.top, 2)
+                }
+
+                Spacer()
+
+                VStack(alignment: .trailing) {
+                    Text(expense.getType())
+
+                    Text(TimeUtils.getDate(expense.creationDate))
+                        .font(.caption)
+                        .padding(.top, 2)
+                }
+            }
+            .padding(.vertical, 4)
+
+            Divider()
+                .opacity(0.4)
+
+        }
+        
+    }
+}
+
+

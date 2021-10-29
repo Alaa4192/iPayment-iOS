@@ -206,7 +206,7 @@ struct GroupItemView: View {
                     .padding(.top, 1)
                     .opacity(group.getUsersCount() > 1 ? 1 : 0)
 
-                    Text(getDate(group.createdDate))
+                    Text(TimeUtils.getDate(group.createdDate))
                         .font(.caption)
                         .padding(.top, 1)
                         .foregroundColor(.gray)
@@ -220,16 +220,6 @@ struct GroupItemView: View {
                 .padding(.horizontal)
                 .opacity(0.4)
         }
-    }
-
-    private func getDate(_ createdDate: Int64) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-
-        let time = Double(createdDate / 1000)
-
-        return dateFormatter.string(from: Date(timeIntervalSince1970: time))
     }
 }
 

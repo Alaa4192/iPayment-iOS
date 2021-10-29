@@ -98,3 +98,11 @@ class UsersRepository: Api {
         doGetRequest(endpoint: v1_getUserProfile, type: UserProfileModel.self, result: result)
     }
 }
+
+class ExpensesRepository: Api {
+    private lazy var v1_getExpenses = "\(host)/v1/getExpenses"
+
+    func getExpenses(request: GetGroupExpensesRequest, result: @escaping (BaseListModel<ExpenseModel>) -> Void) {
+        doPostRequest(endpoint: v1_getExpenses, encodedJson: request, type: BaseListModel<ExpenseModel>.self, result: result)
+    }
+}

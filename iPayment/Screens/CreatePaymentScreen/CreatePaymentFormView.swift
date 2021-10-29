@@ -130,13 +130,6 @@ struct CreatePaymentFormView: BaseView {
     }
 }
 
-enum ExpenseType: String {
-    case defaultType = "Default"
-    case refueling = "Refueling"
-    case service = "Service"
-    case expense = "Expense"
-}
-
 struct CreatePaymentFormView_Previews: PreviewProvider {
     static var previews: some View {
         CreatePaymentFormView(group: GroupModel.create(name: "Test", isFavorite: false))

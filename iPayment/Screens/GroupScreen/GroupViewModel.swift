@@ -8,8 +8,15 @@
 
 import SwiftUI
 
-class GroupViewModel: BaseViewModel {
+class GroupViewModel: BaseViewModel, ObservableObject {
 
     var expenseType: ExpenseType = .defaultType
-    
+
+    @Published var expenses = Array<ExpenseModel>()
+
+    func loadExpenses(_ groupId: String) {
+        ExpensesRepository().getExpenses(request: GetGroupExpensesRequest(groupId: groupId)) { expenses in
+            self.expenses = expenses.items
+        }
+    }
 }

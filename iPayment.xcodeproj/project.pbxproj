@@ -55,6 +55,9 @@
 		FECF5043270B89A00004E1C5 /* BaseNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECF5042270B89A00004E1C5 /* BaseNavigationView.swift */; };
 		FECF5045270B8A780004E1C5 /* BaseNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECF5044270B8A780004E1C5 /* BaseNavigationModel.swift */; };
 		FECF5048270B8B200004E1C5 /* PushContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECF5047270B8B200004E1C5 /* PushContainerView.swift */; };
+		FEFBD81C272C7234002B392F /* ExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFBD81B272C7234002B392F /* ExpenseModel.swift */; };
+		FEFBD81F272C93F8002B392F /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFBD81E272C93F8002B392F /* TimeUtils.swift */; };
+		FEFBD822272C9627002B392F /* NumbersExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFBD821272C9627002B392F /* NumbersExtentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +113,9 @@
 		FECF5042270B89A00004E1C5 /* BaseNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationView.swift; sourceTree = "<group>"; };
 		FECF5044270B8A780004E1C5 /* BaseNavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationModel.swift; sourceTree = "<group>"; };
 		FECF5047270B8B200004E1C5 /* PushContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushContainerView.swift; sourceTree = "<group>"; };
+		FEFBD81B272C7234002B392F /* ExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModel.swift; sourceTree = "<group>"; };
+		FEFBD81E272C93F8002B392F /* TimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
+		FEFBD821272C9627002B392F /* NumbersExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersExtentions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +150,8 @@
 		FE1F53C027011EB800893621 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				FEFBD820272C9614002B392F /* Extentions */,
+				FEFBD81D272C93E7002B392F /* Utils */,
 				FECF5046270B8AD60004E1C5 /* BaseViewNavigation */,
 				FE1F53C52701251100893621 /* Networking */,
 				FE1F53C127011ED900893621 /* BaseView.swift */,
@@ -224,6 +232,7 @@
 				FE1F53BE26FFE10D00893621 /* BaseListModel.swift */,
 				FE80064C270E2F26005AECE5 /* UserModel.swift */,
 				FEBDFEFF271388620070F8CB /* UserProfileModel.swift */,
+				FEFBD81B272C7234002B392F /* ExpenseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -358,6 +367,22 @@
 			path = BaseViewNavigation;
 			sourceTree = "<group>";
 		};
+		FEFBD81D272C93E7002B392F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FEFBD81E272C93F8002B392F /* TimeUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		FEFBD820272C9614002B392F /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				FEFBD821272C9627002B392F /* NumbersExtentions.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -489,6 +514,7 @@
 				FE62791E2537619200ADC1A9 /* LoadingView.swift in Sources */,
 				FE800648270CDB95005AECE5 /* GroupFormView.swift in Sources */,
 				FE1F53C72701252400893621 /* Api.swift in Sources */,
+				FEFBD81F272C93F8002B392F /* TimeUtils.swift in Sources */,
 				FE1F53C4270120C700893621 /* BaseViewModel.swift in Sources */,
 				FE86A09D24D3614900A8A627 /* DefaultSecureField.swift in Sources */,
 				FECF5043270B89A00004E1C5 /* BaseNavigationView.swift in Sources */,
@@ -496,6 +522,7 @@
 				FE86A09B24D35F4F00A8A627 /* DefaultTextField.swift in Sources */,
 				FE893E19271AD5E500FCB696 /* FullScreenFormView.swift in Sources */,
 				FE86A06D24D1EA7600A8A627 /* LoginView.swift in Sources */,
+				FEFBD81C272C7234002B392F /* ExpenseModel.swift in Sources */,
 				FECF5045270B8A780004E1C5 /* BaseNavigationModel.swift in Sources */,
 				FE62AAD02714DFB8003308B9 /* GroupDetailsView.swift in Sources */,
 				FE86A05D24D1E69200A8A627 /* ContentView.swift in Sources */,
@@ -514,6 +541,7 @@
 				FE1F53CC2703287900893621 /* GroupViewModel.swift in Sources */,
 				FE1F53D427032B5000893621 /* ProfileView.swift in Sources */,
 				FE893E0A271A04D400FCB696 /* FullScreenView.swift in Sources */,
+				FEFBD822272C9627002B392F /* NumbersExtentions.swift in Sources */,
 				FECDE39424DB737900FAFA41 /* LoginViewModel.swift in Sources */,
 				FE62AAD42714E063003308B9 /* GroupInfoView.swift in Sources */,
 				FE893E12271ACE7100FCB696 /* CreatePaymentFormView.swift in Sources */,
