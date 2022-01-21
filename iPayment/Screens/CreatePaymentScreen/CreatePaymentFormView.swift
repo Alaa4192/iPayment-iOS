@@ -20,9 +20,12 @@ struct CreatePaymentFormView: BaseView {
     @State private var service = ""
     @State private var expense = ""
 
-    @State var attachmentsMenuIsPresented: Bool = false
+    @State private var attachmentsMenuIsPresented: Bool = false
+    @State private var showingImagePicker: Bool = false
+    @State private var showingCameraPicker: Bool = false
+    @State private var inputImage: UIImage?
 
-    var viewModel = CreatePaymentFormViewModel()
+    @ObservedObject var viewModel = CreatePaymentFormViewModel()
 
     var body: some View {
         FullScreenFormView(actionButton: actionButton) {
@@ -86,9 +89,14 @@ struct CreatePaymentFormView: BaseView {
 
     private func attachmentsSection(type: ExpenseType) -> some View {
         return Section(content: {
-//                HStack {
-//
-//                }
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(self.viewModel.images, id: \.self) { image in
+                            AttachmentView(image: image)
+                        }
+                        .padding(.vertical, 8)
+                    }
+                }
             }, header: {
                 HStack {
                     Text("Attachments")
@@ -112,21 +120,61 @@ struct CreatePaymentFormView: BaseView {
                     buttons: getAttachmentsMenuButtons()
                 )
             })
+            .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+                ImagePicker(image: self.$inputImage, sourceType: .photoLibrary)
+            }
+            .sheet(isPresented: $showingCameraPicker, onDismiss: loadImage) {
+                ImagePicker(image: self.$inputImage, sourceType: .camera)
+            }
     }
 
     private func getAttachmentsMenuButtons() -> [ActionSheet.Button] {
         var buttons = Array<ActionSheet.Button>()
         buttons.append(ActionSheet.Button.default(Text("Choose a Photo")) {
-
+            self.showingImagePicker = true
         })
         
         buttons.append(ActionSheet.Button.default(Text("Take a Photo")) {
-
+            self.showingCameraPicker = true
         })
 
         buttons.append(ActionSheet.Button.cancel())
 
         return buttons
+    }
+
+    private func loadImage() {
+        self.attachmentsMenuIsPresented = false
+
+        guard let inputImage = inputImage else { return }
+        self.viewModel.onImageAdded(inputImage)
+        self.inputImage = nil
+    }
+}
+
+struct AttachmentView: View {
+    let image: UIImage
+
+    var body: some View {
+        VStack {
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFill()
+                .overlay(Rectangle().stroke(Color.black, lineWidth: 1))
+                .frame(width: 80, height: 80)
+                .cornerRadius(8, antialiased: true)
+
+//            Image(systemName: "trash")
+//                .background(Color.white)
+//                .frame(width: 32, height: 32)
+        }
+    }
+}
+
+struct AttachmentView_Previews: PreviewProvider {
+    static var previews: some View {
+        AttachmentView(image: UIImage(systemName: "list.bullet.rectangle.portrait.fill")!)
+            .previewLayout(.sizeThatFits)
     }
 }
 

@@ -8,6 +8,11 @@
 
 import SwiftUI
 
-class CreatePaymentFormViewModel: BaseViewModel {
+class CreatePaymentFormViewModel: BaseViewModel, ObservableObject {
 
+    @Published var images = Array<UIImage>()
+
+    func onImageAdded(_ image: UIImage) {
+        images.append(image)
+    }
 }

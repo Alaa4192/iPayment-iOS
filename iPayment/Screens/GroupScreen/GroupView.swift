@@ -213,7 +213,7 @@ struct AddExpenseView: View {
                 .foregroundColor(Color.gray)
                 .padding(.bottom, 4)
 
-            HStack(alignment: .bottom, spacing: 48) {
+            HStack(alignment: .bottom, spacing: 56) {
                 ItemView(text: ExpenseType.expense.rawValue, imageSystemName: "creditcard") {
                     onClick(.expense)
                 }
