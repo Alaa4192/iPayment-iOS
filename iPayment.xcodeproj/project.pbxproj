@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4A5669E31D002453BDE77C67 /* libPods-iPayment.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E68036736865ACCACF96902E /* libPods-iPayment.a */; };
+		FE14FB23279C313D0011F9E7 /* UploadFileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE14FB22279C313D0011F9E7 /* UploadFileUtils.swift */; };
+		FE14FB25279CA2AA0011F9E7 /* AttachmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE14FB24279CA2AA0011F9E7 /* AttachmentModel.swift */; };
 		FE1F53BB26FFDC1C00893621 /* GroupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53BA26FFDC1C00893621 /* GroupsViewModel.swift */; };
 		FE1F53BD26FFDFA000893621 /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53BC26FFDFA000893621 /* GroupModel.swift */; };
 		FE1F53BF26FFE10D00893621 /* BaseListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1F53BE26FFE10D00893621 /* BaseListModel.swift */; };
@@ -65,6 +67,8 @@
 		83025FB95471A11ECDE986A1 /* Pods-iPayment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPayment.release.xcconfig"; path = "Target Support Files/Pods-iPayment/Pods-iPayment.release.xcconfig"; sourceTree = "<group>"; };
 		E68036736865ACCACF96902E /* libPods-iPayment.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iPayment.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7F8B37E47715FCE79C766FF /* Pods-iPayment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPayment.debug.xcconfig"; path = "Target Support Files/Pods-iPayment/Pods-iPayment.debug.xcconfig"; sourceTree = "<group>"; };
+		FE14FB22279C313D0011F9E7 /* UploadFileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileUtils.swift; sourceTree = "<group>"; };
+		FE14FB24279CA2AA0011F9E7 /* AttachmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentModel.swift; sourceTree = "<group>"; };
 		FE1F53BA26FFDC1C00893621 /* GroupsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewModel.swift; sourceTree = "<group>"; };
 		FE1F53BC26FFDFA000893621 /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
 		FE1F53BE26FFE10D00893621 /* BaseListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListModel.swift; sourceTree = "<group>"; };
@@ -149,9 +153,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FE14FB21279C310C0011F9E7 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				FE14FB22279C313D0011F9E7 /* UploadFileUtils.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		FE1F53C027011EB800893621 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				FE14FB21279C310C0011F9E7 /* Storage */,
 				FEF442702738859000F41AB9 /* Pickers */,
 				FEFBD820272C9614002B392F /* Extentions */,
 				FEFBD81D272C93E7002B392F /* Utils */,
@@ -236,6 +249,7 @@
 				FE80064C270E2F26005AECE5 /* UserModel.swift */,
 				FEBDFEFF271388620070F8CB /* UserProfileModel.swift */,
 				FEFBD81B272C7234002B392F /* ExpenseModel.swift */,
+				FE14FB24279CA2AA0011F9E7 /* AttachmentModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -537,6 +551,7 @@
 				FEFBD81C272C7234002B392F /* ExpenseModel.swift in Sources */,
 				FECF5045270B8A780004E1C5 /* BaseNavigationModel.swift in Sources */,
 				FE62AAD02714DFB8003308B9 /* GroupDetailsView.swift in Sources */,
+				FE14FB25279CA2AA0011F9E7 /* AttachmentModel.swift in Sources */,
 				FE86A05D24D1E69200A8A627 /* ContentView.swift in Sources */,
 				FEBDFF00271388620070F8CB /* UserProfileModel.swift in Sources */,
 				FE80064A270D06B2005AECE5 /* GroupFormViewModel.swift in Sources */,
@@ -548,6 +563,7 @@
 				FE86A09924D320A300A8A627 /* DefaultButton.swift in Sources */,
 				FE1F53BF26FFE10D00893621 /* BaseListModel.swift in Sources */,
 				FECF5048270B8B200004E1C5 /* PushContainerView.swift in Sources */,
+				FE14FB23279C313D0011F9E7 /* UploadFileUtils.swift in Sources */,
 				FE1F53C227011ED900893621 /* BaseView.swift in Sources */,
 				FE42339B2539CAD700C3AE0E /* GroupsView.swift in Sources */,
 				FE1F53CC2703287900893621 /* GroupViewModel.swift in Sources */,

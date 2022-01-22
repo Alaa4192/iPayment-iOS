@@ -89,14 +89,24 @@ struct CreatePaymentFormView: BaseView {
 
     private func attachmentsSection(type: ExpenseType) -> some View {
         return Section(content: {
-                ScrollView(.horizontal) {
-                    HStack {
-                        ForEach(self.viewModel.images, id: \.self) { image in
-                            AttachmentView(image: image)
-                        }
-                        .padding(.vertical, 8)
+//                ScrollView(.horizontal) {
+//                    HStack {
+//                        ForEach(self.viewModel.images, id: \.self) { image in
+//                            AttachmentView(image: image)
+//                        }
+//                        .padding(.vertical, 8)
+//                    }
+//                }
+
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(self.viewModel.imagesInProgress, id:\.self) { image in
+                        AttachmentView(image: image)
                     }
                 }
+            }
+
+
             }, header: {
                 HStack {
                     Text("Attachments")
@@ -153,33 +163,48 @@ struct CreatePaymentFormView: BaseView {
 }
 
 struct AttachmentView: View {
-    let image: UIImage
+    var image: NewImageModel
 
     var body: some View {
-        VStack {
-            Image(uiImage: image)
+        if image.progress == 100 {
+            Image(uiImage: image.image)
                 .resizable()
                 .scaledToFill()
                 .overlay(Rectangle().stroke(Color.black, lineWidth: 1))
                 .frame(width: 80, height: 80)
                 .cornerRadius(8, antialiased: true)
+        } else {
+            ZStack(alignment: .center) {
+                Image(uiImage: image.image)
+                    .resizable()
+                    .scaledToFill()
+                    .overlay(Rectangle().stroke(Color.black, lineWidth: 1))
+                    .frame(width: 80, height: 80)
+                    .cornerRadius(8, antialiased: true)
+                    .blur(radius: 3)
 
-//            Image(systemName: "trash")
-//                .background(Color.white)
-//                .frame(width: 32, height: 32)
+                Text(String(image.progress))
+            }
         }
+
     }
 }
 
 struct AttachmentView_Previews: PreviewProvider {
     static var previews: some View {
-        AttachmentView(image: UIImage(systemName: "list.bullet.rectangle.portrait.fill")!)
-            .previewLayout(.sizeThatFits)
+        VStack(spacing: 16) {
+            let imageModel1 = NewImageModel(UIImage(systemName: "pencil.and.outline")!, 88)
+            AttachmentView(image: imageModel1)
+
+            let imageModel2 = NewImageModel(UIImage(systemName: "pencil.and.outline")!, 100)
+            AttachmentView(image: imageModel2)
+        }
+        .previewLayout(.sizeThatFits)
     }
 }
 
-struct CreatePaymentFormView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreatePaymentFormView(group: GroupModel.create(name: "Test", isFavorite: false))
-    }
-}
+//struct CreatePaymentFormView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CreatePaymentFormView(group: GroupModel.create(name: "Test", isFavorite: false))
+//    }
+//}
